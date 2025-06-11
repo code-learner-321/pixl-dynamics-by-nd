@@ -1,0 +1,469 @@
+<?php
+
+namespace Elementor_Addon_Flip_Card;
+
+if (! defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
+use Elementor\Widget_Base;
+
+class Elementor_Gallery_Card_Widget extends Widget_Base
+{
+
+    public function get_script_depends(): array
+    {
+        return ['widget-flip-card-js', 'widget-card-pagenation-js'];
+    }
+
+    public function get_style_depends(): array
+    {
+        return ['widget-flip-card-style'];
+    }
+
+    public function get_name(): string
+    {
+        return 'elementor-gallery-flip-card';
+    }
+
+    public function get_title(): string
+    {
+        return esc_html__('Gallery Flip Card', 'elementor-gallery-flip-card-widget');
+    }
+
+    public function get_icon(): string
+    {
+        return 'eicon-ehp-cta';
+    }
+
+    public function get_categories(): array
+    {
+        return ['pixel-dynamics'];
+    }
+
+    public function get_keywords(): array
+    {
+        return ['flipcard', 'card', 'porfolio'];
+    }
+
+    public function get_custom_help_url(): string
+    {
+        return 'https://developers.elementor.com/docs/widgets/';
+    }
+
+    public function has_widget_inner_wrapper(): bool
+    {
+        return false;
+    }
+
+    protected function is_dynamic_content(): bool
+    {
+        return false;
+    }
+
+    protected function register_controls(): void
+    {
+        $this->start_controls_section(
+            'content_section',
+            [
+                'label' => esc_html__('Projects To Display', 'elementor-gallery-flip-card-widget'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'posts_per_page',
+            [
+                'label' => esc_html__('Projects Per Page', 'elementor-gallery-flip-card-widget'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 20,
+                'step' => 1,
+                'default' => 2,
+            ]
+        );
+
+        $this->add_control(
+            'paged',
+            [
+                'label' => esc_html__('Current Page', 'elementor-gallery-flip-card-widget'),
+                'type' => \Elementor\Controls_Manager::HIDDEN,
+                'default' => 1,
+            ]
+        );
+
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'section_card_height',
+            [
+                'label' => esc_html__('Card Height', 'plugin-name'),
+            ]
+        );
+        $this->add_responsive_control(
+            'card_height',
+            [
+                'label' => __('Card Height', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'vh'],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 800,
+                        'step' => 1,
+                    ],
+                    'vh' => [
+                        'min' => 10,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 300,
+                ],
+                'tablet_default' => [
+                    'unit' => 'px',
+                    'size' => 250,
+                ],
+                'mobile_default' => [
+                    'unit' => 'px',
+                    'size' => 200,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .card' => 'height: {{SIZE}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_hover_effects',
+            [
+                'label' => esc_html__('Hover Effects', 'plugin-name'),
+            ]
+        );
+
+        $this->add_control(
+            'hover_effect',
+            [
+                'label'   => esc_html__('Select Hover Effect', 'plugin-name'),
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'vertical-flip'         => esc_html__('Vertical Flip', 'plugin-name'),
+                    'inverse-vertical-flip' => esc_html__('Inverse Vertical Flip', 'plugin-name'),
+                    'horizontal-flip'       => esc_html__('Horizontal Flip', 'plugin-name'),
+                    'inverse-horizontal-flip' => esc_html__('Inverse Horizontal Flip', 'plugin-name'),
+                ],
+                'default' => 'vertical-flip',
+                'prefix_class' => 'elementor-gallery-flip-card-',
+                'render_type' => 'template',
+                'frontend_available' => true,
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style',
+            [
+                'label' => __('Card Style', 'plugin-name'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'gap',
+            [
+                'label' => __('Gap', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 10,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'tablet_default' => [
+                    'unit' => 'px',
+                    'size' => 15,
+                ],
+                'mobile_default' => [
+                    'unit' => 'px',
+                    'size' => 10,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .gallery' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'border_radius',
+            [
+                'label' => __('Border Radius', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 10,
+                ],
+                'tablet_default' => [
+                    'unit' => 'px',
+                    'size' => 8,
+                ],
+                'mobile_default' => [
+                    'unit' => 'px',
+                    'size' => 5,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}' => '--card-border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .card-front, {{WRAPPER}} .card-back' => 'border-radius: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'card_front_style',
+            [
+                'label' => __('Card Background ( Back Side )', 'plugin-name'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'card_back_color',
+            [
+                'label' => __('Background Color', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(0, 0, 0, 0.7)',
+                'selectors' => [
+                    '{{WRAPPER}}' => '--card-back-bg: {{VALUE}};',
+                ],
+            ]
+        );
+        
+        // Add a divider for better organization
+        $this->add_control(
+            'card_back_style_divider',
+            [
+                'type' => \Elementor\Controls_Manager::DIVIDER,
+            ]
+        );
+        
+        // Add a note about the background color
+        $this->add_control(
+            'card_back_style_note',
+            [
+                'type' => \Elementor\Controls_Manager::RAW_HTML,
+                'raw' => __('The background color will be applied to the back of the card.', 'plugin-name'),
+                'content_classes' => 'elementor-descriptor',
+            ]
+        );
+        $this->end_controls_section();
+
+        // Card Back Styles starts....
+        $this->start_controls_section(
+            'section_card_back',
+            [
+                'label' => __('Card Styles ( Back Side )', 'plugin-name'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'heading_color',
+            [
+                'label' => __('Heading Color', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .card-back h3' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'heading_font_size',
+            [
+                'label' => __('Heading Font Size', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 50,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 28,
+                ],
+                'tablet_default' => [
+                    'unit' => 'px',
+                    'size' => 24,
+                ],
+                'mobile_default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .card-back h3' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'paragraph_color',
+            [
+                'label' => __('Category Color', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .card-back p' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'paragraph_font_size',
+            [
+                'label' => __('Category Font Size', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 30,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 18,
+                ],
+                'tablet_default' => [
+                    'unit' => 'px',
+                    'size' => 16,
+                ],
+                'mobile_default' => [
+                    'unit' => 'px',
+                    'size' => 14,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .card-back p' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+        // Card Back Styles ends here...
+    }
+
+    protected function render(): void
+    {
+        $settings = $this->get_settings_for_display();
+        $selected_effect = esc_attr($settings['hover_effect']); // Ensure safe output
+        $posts_per_page = isset($settings['posts_per_page']) ? intval($settings['posts_per_page']) : 2;
+
+        // Get current page
+        $paged = max(1, get_query_var('paged'));
+
+        $args = [
+            'post_type'      => 'portfolio_card',
+            'posts_per_page' => $posts_per_page,
+            'paged'          => $paged,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+        ];
+
+        $query = new \WP_Query($args);
+
+        if ($query->have_posts()) {
+            echo '<div class="elementor-widget-container elementor-gallery-flip-card ' . $selected_effect . '" data-effect="' . $selected_effect . '">';
+            echo '<div class="elementor-gallery-flip-card-container" data-posts-per-page="' . esc_attr($posts_per_page) . '">';
+            echo '<div class="gallery-container">';
+            echo '<div class="gallery">';
+
+            while ($query->have_posts()) {
+                $query->the_post();
+                $post_id    = get_the_ID();
+                $title      = get_the_title();
+                $thumbnail  = get_the_post_thumbnail($post_id, 'full', ['class' => 'card-image']);
+                $categories = get_the_terms($post_id, 'card_slider_category');
+                $post_link  = get_permalink($post_id);
+
+                echo '<div class="elementor-widget-container">';
+                echo '<a href="' . esc_url($post_link) . '" class="card" data-effect="' . $selected_effect . '">';
+                echo '  <div class="card-inner">';
+                echo '      <div class="card-front">';
+                if (has_post_thumbnail($post_id)) {
+                    echo $thumbnail;
+                } else {
+                    echo '<img src="' . esc_url(plugins_url('assets/images/placeholder.jpg', dirname(__FILE__))) . '" alt="' . esc_attr($title) . '" class="card-image">';
+                }
+                echo '</div>';
+                echo '      <div class="card-back">';
+                echo '<h3>' . esc_html($title) . '</h3>';
+
+                if (!empty($categories) && !is_wp_error($categories)) {
+                    foreach ($categories as $category) {
+                        echo '<p>' . esc_html($category->name) . '</p>';
+                    }
+                }
+
+                echo '      </div>'; // Close .card-back
+                echo '  </div>'; // Close .card-inner
+                echo '</a>';
+                echo '</div>';
+            }
+
+            echo '</div>'; // End .gallery
+
+            // Pagination
+            if ($query->max_num_pages > 1) {
+                echo '<div class="pagination-links">';
+
+                // Previous button
+                if ($paged > 1) {
+                    echo '<a href="#" data-page="' . ($paged - 1) . '" class="page-number prev">&laquo; Previous</a>';
+                }
+
+                // Page numbers
+                for ($i = 1; $i <= $query->max_num_pages; $i++) {
+                    $class = ($i === $paged) ? 'current' : '';
+                    echo '<a href="#" data-page="' . $i . '" class="page-number ' . $class . '">' . $i . '</a>';
+                }
+
+                // Next button
+                if ($paged < $query->max_num_pages) {
+                    echo '<a href="#" data-page="' . ($paged + 1) . '" class="page-number next">Next &raquo;</a>';
+                }
+
+                echo '</div>'; // End .pagination-links
+            }
+
+            echo '</div>'; // End .gallery-container
+            echo '</div>'; // End .elementor-gallery-flip-card-container
+            echo '</div>'; // End .elementor-widget-container
+
+            wp_reset_postdata();
+        } else {
+            echo '<p>No portfolio cards found.</p>';
+        }
+    }
+}
