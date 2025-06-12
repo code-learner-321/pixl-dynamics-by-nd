@@ -375,6 +375,100 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
 
         $this->end_controls_section();
         // Card Back Styles ends here...
+
+        // Add Pagination Style Section
+        $this->start_controls_section(
+            'section_pagination_style',
+            [
+                'label' => __('Pagination Style', 'plugin-name'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'pagination_margin',
+            [
+                'label' => __('Margin', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-gallery-flip-card-container .pagination-links' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                ],
+                'default' => [
+                    'top' => '30',
+                    'right' => '0',
+                    'bottom' => '30',
+                    'left' => '0',
+                    'unit' => 'px',
+                    'isLinked' => false,
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'pagination_padding',
+            [
+                'label' => __('Padding', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-gallery-flip-card-container .pagination-links' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                ],
+                'default' => [
+                    'top' => '0',
+                    'right' => '0',
+                    'bottom' => '0',
+                    'left' => '0',
+                    'unit' => 'px',
+                    'isLinked' => false,
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'pagination_link_padding',
+            [
+                'label' => __('Link Padding', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-gallery-flip-card-container .pagination-links .page-number' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                ],
+                'default' => [
+                    'top' => '8',
+                    'right' => '16',
+                    'bottom' => '8',
+                    'left' => '16',
+                    'unit' => 'px',
+                    'isLinked' => false,
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'pagination_gap',
+            [
+                'label' => __('Gap Between Links', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 5,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-gallery-flip-card-container .pagination-links' => 'gap: {{SIZE}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render(): void
@@ -395,6 +489,7 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         ];
 
         $query = new \WP_Query($args);
+        
 
         if ($query->have_posts()) {
             echo '<div class="elementor-widget-container elementor-gallery-flip-card ' . $selected_effect . '" data-effect="' . $selected_effect . '">';
@@ -437,10 +532,9 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
 
             echo '</div>'; // End .gallery
 
-            // Pagination
             if ($query->max_num_pages > 1) {
                 echo '<div class="pagination-links">';
-
+                
                 // Previous button
                 if ($paged > 1) {
                     echo '<a href="#" data-page="' . ($paged - 1) . '" class="page-number prev">&laquo; Previous</a>';

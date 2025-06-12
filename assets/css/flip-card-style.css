@@ -380,45 +380,57 @@
 }
 
 /* Pagination Styles */
-.pagination {
-    margin: 30px 0;
-    text-align: center;
+.elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links {
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
 }
 
-.pagination-links {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    flex-wrap: wrap;
+.elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number {
+    display: inline-block !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    text-decoration: none !important;
+    color: #333 !important;
+    background: #fff !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
 }
 
-.pagination .page-number {
-    display: inline-block;
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #333;
-    background: #fff;
-    transition: all 0.3s ease;
-    cursor: pointer;
+.elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number:hover {
+    background: #f0f0f0 !important;
+    border-color: #999 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
 }
 
-.pagination .page-number:hover {
-    background: #f0f0f0;
-    border-color: #999;
+.elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number.current {
+    background: #333 !important;
+    color: #fff !important;
+    border-color: #333 !important;
+    font-weight: 600 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
+    pointer-events: none !important;
 }
 
-.pagination .page-number.current {
-    background: #333;
-    color: #fff;
-    border-color: #333;
+.elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number.prev,
+.elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number.next {
+    background: #f8f8f8 !important;
+    font-weight: 500 !important;
+}
+
+.elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number.prev:hover,
+.elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number.next:hover {
+    background: #eee !important;
 }
 
 @media (max-width: 768px) {
-    .pagination .page-number {
-        padding: 6px 12px;
-        font-size: 14px;
+    .elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number {
+        font-size: 14px !important;
     }
 }
 
