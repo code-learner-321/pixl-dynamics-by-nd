@@ -93,75 +93,6 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         );
 
         $this->end_controls_section();
-        $this->start_controls_section(
-            'section_card_height',
-            [
-                'label' => esc_html__('Card Height', 'plugin-name'),
-            ]
-        );
-        $this->add_responsive_control(
-            'card_height',
-            [
-                'label' => __('Card Height', 'plugin-name'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px', 'vh'],
-                'range' => [
-                    'px' => [
-                        'min' => 100,
-                        'max' => 800,
-                        'step' => 1,
-                    ],
-                    'vh' => [
-                        'min' => 10,
-                        'max' => 100,
-                        'step' => 1,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 300,
-                ],
-                'tablet_default' => [
-                    'unit' => 'px',
-                    'size' => 250,
-                ],
-                'mobile_default' => [
-                    'unit' => 'px',
-                    'size' => 200,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .card' => 'height: {{SIZE}}{{UNIT}} !important;',
-                ],
-            ]
-        );
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'section_hover_effects',
-            [
-                'label' => esc_html__('Hover Effects', 'plugin-name'),
-            ]
-        );
-
-        $this->add_control(
-            'hover_effect',
-            [
-                'label'   => esc_html__('Select Hover Effect', 'plugin-name'),
-                'type'    => \Elementor\Controls_Manager::SELECT,
-                'options' => [
-                    'vertical-flip'         => esc_html__('Vertical Flip', 'plugin-name'),
-                    'inverse-vertical-flip' => esc_html__('Inverse Vertical Flip', 'plugin-name'),
-                    'horizontal-flip'       => esc_html__('Horizontal Flip', 'plugin-name'),
-                    'inverse-horizontal-flip' => esc_html__('Inverse Horizontal Flip', 'plugin-name'),
-                ],
-                'default' => 'vertical-flip',
-                'prefix_class' => 'elementor-gallery-flip-card-',
-                'render_type' => 'template',
-                'frontend_available' => true,
-            ]
-        );
-
-        $this->end_controls_section();
 
         $this->start_controls_section(
             'section_style',
@@ -242,6 +173,78 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         $this->end_controls_section();
 
         $this->start_controls_section(
+            'section_hover_effects',
+            [
+                'label' => esc_html__('Hover Effects', 'plugin-name'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'hover_effect',
+            [
+                'label'   => esc_html__('Select Hover Effect', 'plugin-name'),
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'vertical-flip'         => esc_html__('Vertical Flip', 'plugin-name'),
+                    'inverse-vertical-flip' => esc_html__('Inverse Vertical Flip', 'plugin-name'),
+                    'horizontal-flip'       => esc_html__('Horizontal Flip', 'plugin-name'),
+                    'inverse-horizontal-flip' => esc_html__('Inverse Horizontal Flip', 'plugin-name'),
+                ],
+                'default' => 'vertical-flip',
+                'prefix_class' => 'elementor-gallery-flip-card-',
+                'render_type' => 'template',
+                'frontend_available' => true,
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_card_height',
+            [
+                'label' => esc_html__('Card Height', 'plugin-name'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_responsive_control(
+            'card_height',
+            [
+                'label' => __('Card Height', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'vh'],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 800,
+                        'step' => 1,
+                    ],
+                    'vh' => [
+                        'min' => 10,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 300,
+                ],
+                'tablet_default' => [
+                    'unit' => 'px',
+                    'size' => 250,
+                ],
+                'mobile_default' => [
+                    'unit' => 'px',
+                    'size' => 200,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .card' => 'height: {{SIZE}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+        $this->end_controls_section();
+
+        $this->start_controls_section(
             'card_front_style',
             [
                 'label' => __('Card Background ( Back Side )', 'plugin-name'),
@@ -259,7 +262,7 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
                 ],
             ]
         );
-        
+
         // Add a divider for better organization
         $this->add_control(
             'card_back_style_divider',
@@ -267,7 +270,7 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
                 'type' => \Elementor\Controls_Manager::DIVIDER,
             ]
         );
-        
+
         // Add a note about the background color
         $this->add_control(
             'card_back_style_note',
