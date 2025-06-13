@@ -45,102 +45,6 @@ if (!did_action('elementor/loaded')) {
     return;
 }
 
-function create_portfolio_card_flip_gallery()
-{
-
-    $labels = array(
-        'name' => _x('Portfolio Image Card Gallery', 'Post Type General Name', 'portfolio-card-flipping'),
-        'singular_name' => _x('Portfolio Image Card Gallery', 'Post Type Singular Name', 'portfolio-card-flipping'),
-        'menu_name' => _x('Portfolio Card Gallery', 'Admin Menu text', 'portfolio-card-flipping'),
-        'name_admin_bar' => _x('Portfolio Image Card Gallery', 'Add New on Toolbar', 'portfolio-card-flipping'),
-        'add_new' => __('Add New', 'portfolio-card-flipping'),
-        'add_new_item' => __('Add New Image Slider', 'portfolio-card-flipping'),
-        'new_item' => __('New Image Slider', 'portfolio-card-flipping'),
-        'edit_item' => __('Edit Image Slider', 'portfolio-card-flipping'),
-        'view_item' => __('View Image Slider', 'portfolio-card-flipping'),
-        'all_items' => __('All Image Slider', 'portfolio-card-flipping'),
-        'search_items' => __('Search Image Slider', 'portfolio-card-flipping'),
-        'parent_item_colon' => __('Parent Image Slider:', 'portfolio-card-flipping'),
-        'not_found' => __('No image slider found.', 'portfolio-card-flipping'),
-        'not_found_in_trash' => __('No image slider found in Trash.', 'portfolio-card-flipping'),
-        'featured_image' => _x('Slider Image', 'Overrides the "Featured Image" phrase for this post type.', 'portfolio-card-flipping'),
-        'set_featured_image' => _x('Set slider image', 'Overrides the "Set featured image" phrase for this post type.', 'portfolio-card-flipping'),
-        'remove_featured_image' => _x('Remove slider image', 'Overrides the "Remove featured image" phrase for this post type.', 'portfolio-card-flipping'),
-        'use_featured_image' => _x('Use as slider image', 'Overrides the "Use as featured image" phrase for this post type.', 'portfolio-card-flipping'),
-        'archives' => _x('Image Slider Archives', 'The post type archive label used in nav menus.', 'portfolio-card-flipping'),
-        'insert_into_item' => _x('Insert into image slider', 'Overrides the "Insert into post" phrase for this post type.', 'portfolio-card-flipping'),
-        'uploaded_to_this_item' => _x('Uploaded to this image slider', 'Overrides the "Uploaded to this post" phrase for this post type.', 'portfolio-card-flipping'),
-        'filter_items_list' => _x('Filter image slides list', 'Screen reader text for the filter links heading.', 'portfolio-card-flipping'),
-        'items_list_navigation' => _x('Image slider list navigation', 'Screen reader text for the pagination heading.', 'portfolio-card-flipping'),
-        'items_list' => _x('Image slider list', 'Screen reader text for the items list heading.', 'portfolio-card-flipping'),
-    );
-
-    $args = array(
-        'label' => __('Portfolio Image Card Gallery', 'portfolio-card-flipping'),
-        'description' => __('A custom post type for image slider', 'portfolio-card-flipping'),
-        'labels' => $labels,
-        'supports' => array('title', 'editor', 'thumbnail','page-attributes'),
-        'hierarchical' => false,
-        'public' => true,
-        'show_ui' => true,
-        'show_in_menu' => true,
-        'menu_position' => 20,
-        'menu_icon' => 'dashicons-grid-view',
-        'show_in_admin_bar' => true,
-        'show_in_nav_menus' => true,
-        'can_export' => true,
-        'has_archive' => true,
-        'exclude_from_search' => false,
-        'publicly_queryable' => true,
-        'capability_type' => 'post',
-        'show_in_rest' => true,
-    );
-
-    register_post_type('portfolio_card', $args);
-}
-
-add_action('init', 'create_portfolio_card_flip_gallery', 0);
-
-// SLIDER TAXANOMY...
-function create_card_slider_taxonomy()
-{
-    $labels = array(
-        'name' => _x('Card Categories', 'Taxonomy General Name', 'portfolio-card-flipping'),
-        'singular_name' => _x('Slider Category', 'Taxonomy Singular Name', 'portfolio-card-flipping'),
-        'menu_name' => __('Card Categories', 'portfolio-card-flipping'),
-        'all_items' => __('All Categories', 'portfolio-card-flipping'),
-        'parent_item' => __('Parent Category', 'portfolio-card-flipping'),
-        'parent_item_colon' => __('Parent Category:', 'portfolio-card-flipping'),
-        'new_item_name' => __('New Category Name', 'portfolio-card-flipping'),
-        'add_new_item' => __('Add New Category', 'portfolio-card-flipping'),
-        'edit_item' => __('Edit Category', 'portfolio-card-flipping'),
-        'update_item' => __('Update Category', 'portfolio-card-flipping'),
-        'view_item' => __('View Category', 'portfolio-card-flipping'),
-        'separate_items_with_commas' => __('Separate categories with commas', 'portfolio-card-flipping'),
-        'add_or_remove_items' => __('Add or remove categories', 'portfolio-card-flipping'),
-        'choose_from_most_used' => __('Choose from the most used', 'portfolio-card-flipping'),
-        'popular_items' => __('Popular Categories', 'portfolio-card-flipping'),
-        'search_items' => __('Search Categories', 'portfolio-card-flipping'),
-        'not_found' => __('Not Found', 'portfolio-card-flipping'),
-        'no_terms' => __('No categories', 'portfolio-card-flipping'),
-        'items_list' => __('Categories list', 'portfolio-card-flipping'),
-        'items_list_navigation' => __('Categories list navigation', 'portfolio-card-flipping'),
-    );
-    $args = array(
-        'labels' => $labels,
-        'hierarchical' => true,
-        'public' => true,
-        'show_ui' => true,
-        'show_admin_column' => true,
-        'show_in_nav_menus' => true,
-        'show_tagcloud' => true,
-        'show_in_rest' => true,
-    );
-    register_taxonomy('card_slider_category', array('portfolio_card'), $args);
-}
-add_action('init', 'create_card_slider_taxonomy', 0);
-// SLIDER TAXANOMY ENDS...
-
 function elementor_widget_flip_card_dependencies()
 {
     if (is_admin()) {
@@ -288,6 +192,45 @@ function register_portfolio_card_post_type() {
 }
 add_action('init', 'register_portfolio_card_post_type');
 
+// SLIDER TAXANOMY...
+function create_card_slider_taxonomy()
+{
+    $labels = array(
+        'name' => _x('Card Categories', 'Taxonomy General Name', 'portfolio-card-flipping'),
+        'singular_name' => _x('Slider Category', 'Taxonomy Singular Name', 'portfolio-card-flipping'),
+        'menu_name' => __('Card Categories', 'portfolio-card-flipping'),
+        'all_items' => __('All Categories', 'portfolio-card-flipping'),
+        'parent_item' => __('Parent Category', 'portfolio-card-flipping'),
+        'parent_item_colon' => __('Parent Category:', 'portfolio-card-flipping'),
+        'new_item_name' => __('New Category Name', 'portfolio-card-flipping'),
+        'add_new_item' => __('Add New Category', 'portfolio-card-flipping'),
+        'edit_item' => __('Edit Category', 'portfolio-card-flipping'),
+        'update_item' => __('Update Category', 'portfolio-card-flipping'),
+        'view_item' => __('View Category', 'portfolio-card-flipping'),
+        'separate_items_with_commas' => __('Separate categories with commas', 'portfolio-card-flipping'),
+        'add_or_remove_items' => __('Add or remove categories', 'portfolio-card-flipping'),
+        'choose_from_most_used' => __('Choose from the most used', 'portfolio-card-flipping'),
+        'popular_items' => __('Popular Categories', 'portfolio-card-flipping'),
+        'search_items' => __('Search Categories', 'portfolio-card-flipping'),
+        'not_found' => __('Not Found', 'portfolio-card-flipping'),
+        'no_terms' => __('No categories', 'portfolio-card-flipping'),
+        'items_list' => __('Categories list', 'portfolio-card-flipping'),
+        'items_list_navigation' => __('Categories list navigation', 'portfolio-card-flipping'),
+    );
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+        'public' => true,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'show_in_nav_menus' => true,
+        'show_tagcloud' => true,
+        'show_in_rest' => true,
+    );
+    register_taxonomy('card_slider_category', array('portfolio_card'), $args);
+}
+add_action('init', 'create_card_slider_taxonomy', 0);
+// SLIDER TAXANOMY ENDS...
 
  /*SIngleton code starts..*/
  function elementor_card_addon() {
