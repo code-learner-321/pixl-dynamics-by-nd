@@ -182,6 +182,58 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
 
         $this->end_controls_section();
 
+        // Image Effects Section
+        $this->start_controls_section(
+            'section_image_effects',
+            [
+                'label' => esc_html__('Image Effects', 'plugin-name'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'enable_reflection',
+            [
+                'label' => esc_html__('Enable Image Reflection', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'plugin-name'),
+                'label_off' => esc_html__('No', 'plugin-name'),
+                'return_value' => 'yes',
+                'default' => 'no',
+                'prefix_class' => 'elementor-gallery-flip-card-reflection-',
+                'render_type' => 'template',
+                'frontend_available' => true,
+            ]
+        );
+
+        $this->add_control(
+            'reflection_opacity',
+            [
+                'label' => esc_html__('Reflection Opacity', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['%'],
+                'range' => [
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 30,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}.elementor-gallery-flip-card-reflection-yes .card-front' => '--reflection-opacity: {{SIZE}}%;',
+                ],
+                'condition' => [
+                    'enable_reflection' => 'yes',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
         $this->start_controls_section(
             'section_card_dimensions',
             [
