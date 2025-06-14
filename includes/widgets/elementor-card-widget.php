@@ -111,44 +111,12 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         $this->start_controls_section(
             'section_style',
             [
-                'label' => __('Card Style', 'plugin-name'),
+                'label' => __('Card Border Radius', 'plugin-name'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
-        $this->add_responsive_control(
-            'gap',
-            [
-                'label' => __('Gap', 'plugin-name'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 10,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 20,
-                ],
-                'tablet_default' => [
-                    'unit' => 'px',
-                    'size' => 15,
-                ],
-                'mobile_default' => [
-                    'unit' => 'px',
-                    'size' => 10,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .gallery' => 'gap: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+        
         $this->add_responsive_control(
             'border_radius',
             [
@@ -215,12 +183,49 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'section_card_height',
+            'section_card_dimensions',
             [
-                'label' => esc_html__('Card Height', 'plugin-name'),
+                'label' => esc_html__('Card Dimensions', 'plugin-name'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+
+        $this->add_responsive_control(
+            'card_width',
+            [
+                'label' => __('Card Width', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 10,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 100,
+                ],
+                'tablet_default' => [
+                    'unit' => '%',
+                    'size' => 100,
+                ],
+                'mobile_default' => [
+                    'unit' => '%',
+                    'size' => 100,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .gallery' => 'grid-template-columns: repeat(auto-fill, minmax({{SIZE}}{{UNIT}}, 1fr)) !important;',
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'card_height',
             [
@@ -256,6 +261,35 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
                 ],
             ]
         );
+
+        $this->add_responsive_control(
+            'columns_gap',
+            [
+                'label' => __('Columns Gap', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 10,
+                        'step' => 0.1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .gallery' => 'gap: {{SIZE}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -300,7 +334,7 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         $this->start_controls_section(
             'section_card_back',
             [
-                'label' => __('Card Styles ( Back Side )', 'plugin-name'),
+                'label' => __('Card Text Styles ( Back Side )', 'plugin-name'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
