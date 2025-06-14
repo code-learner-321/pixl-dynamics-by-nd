@@ -97,13 +97,14 @@ function handle_load_more_cards() {
 
     $page = isset($_POST['page']) ? max(1, intval($_POST['page'])) : 1;
     $posts_per_page = isset($_POST['posts_per_page']) ? intval($_POST['posts_per_page']) : 2;
+    $order_type = isset($_POST['order_type']) ? sanitize_text_field($_POST['order_type']) : 'DESC';
     
     $args = [
         'post_type'      => 'portfolio_card',
         'posts_per_page' => $posts_per_page,
         'paged'          => $page,
         'orderby'        => 'date',
-        'order'          => 'DESC'
+        'order'          => $order_type
     ];
 
     error_log('WP_Query args: ' . print_r($args, true));

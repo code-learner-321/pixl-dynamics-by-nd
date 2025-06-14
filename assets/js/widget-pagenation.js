@@ -20,6 +20,7 @@ jQuery(document).ready(function($) {
     function loadPage(page, $container) {
         const $galleryContainer = $container.find('.gallery-container');
         const postsPerPage = $container.data('posts-per-page') || 2;
+        const orderType = $container.data('order-type') || 'DESC';
         
         $container.addClass('loading');
         
@@ -30,7 +31,8 @@ jQuery(document).ready(function($) {
                 action: 'load_more_cards',
                 nonce: portfolioCardAjax.nonce,
                 page,
-                posts_per_page: postsPerPage
+                posts_per_page: postsPerPage,
+                order_type: orderType
             },
             success: response => {
                 if (!response.success) {

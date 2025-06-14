@@ -92,6 +92,20 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
             ]
         );
 
+        // Order Control
+        $this->add_control(
+            'order_type',
+            [
+                'label'   => __('Order Type', 'plugin-domain'),
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'ASC'  => __('Ascending (ASE)', 'plugin-domain'),
+                    'DESC' => __('Descending (DSE)', 'plugin-domain'),
+                ],
+                'default' => 'DESC',
+            ]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -477,6 +491,10 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         $selected_effect = esc_attr($settings['hover_effect']); // Ensure safe output
         $posts_per_page = isset($settings['posts_per_page']) ? intval($settings['posts_per_page']) : 2;
 
+        /*ORDER TYPE*/
+        $order_type = isset($settings['order_type']) ? esc_attr($settings['order_type']) : 'DESC'; // Get selected order type
+
+
         // Get current page
         $paged = max(1, get_query_var('paged'));
 
@@ -485,15 +503,15 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
             'posts_per_page' => $posts_per_page,
             'paged'          => $paged,
             'orderby'        => 'date',
-            'order'          => 'DESC',
+            'order'          => $order_type,
         ];
 
         $query = new \WP_Query($args);
-        
+
 
         if ($query->have_posts()) {
             echo '<div class="elementor-widget-container elementor-gallery-flip-card ' . $selected_effect . '" data-effect="' . $selected_effect . '">';
-            echo '<div class="elementor-gallery-flip-card-container" data-posts-per-page="' . esc_attr($posts_per_page) . '">';
+            echo '<div class="elementor-gallery-flip-card-container" data-posts-per-page="' . esc_attr($posts_per_page) . '" data-order-type="' . esc_attr($order_type) . '">';
             echo '<div class="gallery-container">';
             echo '<div class="gallery">';
 
@@ -534,7 +552,7 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
 
             if ($query->max_num_pages > 1) {
                 echo '<div class="pagination-links">';
-                
+
                 // Previous button
                 if ($paged > 1) {
                     echo '<a href="#" data-page="' . ($paged - 1) . '" class="page-number prev">&laquo; Previous</a>';
