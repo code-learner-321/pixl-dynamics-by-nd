@@ -8,7 +8,7 @@
  * Author:            Najubudeen
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       portfolio-card-flipping
+ * Text Domain:       card-flipping
  * * Requires Plugins: elementor
  */
 
@@ -35,7 +35,7 @@ if (!did_action('elementor/loaded')) {
     add_action('admin_notices', function() {
         if (!is_plugin_active('elementor/elementor.php')) {
             $message = sprintf(
-                esc_html__('Portfolio Card Flip requires %1$s to be installed and activated.', 'portfolio-card-flipping'),
+                esc_html__('Portfolio Card Flip requires %1$s to be installed and activated.', 'card-flipping'),
                 '<strong>Elementor</strong>'
             );
             $html = sprintf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
@@ -44,6 +44,7 @@ if (!did_action('elementor/loaded')) {
     });
     return;
 }
+
 
 function elementor_widget_flip_card_dependencies()
 {
@@ -153,23 +154,23 @@ function handle_load_more_cards() {
 add_action('wp_ajax_load_more_cards', 'handle_load_more_cards');
 add_action('wp_ajax_nopriv_load_more_cards', 'handle_load_more_cards');
 
-// Register Portfolio Card post type
+// Register Card Flip post type
 function register_portfolio_card_post_type() {
     $labels = [
-        'name'               => _x('Portfolio Cards', 'post type general name', 'portfolio-card-flipping'),
-        'singular_name'      => _x('Portfolio Card', 'post type singular name', 'portfolio-card-flipping'),
-        'menu_name'          => _x('Portfolio Cards', 'admin menu', 'portfolio-card-flipping'),
-        'name_admin_bar'     => _x('Portfolio Card', 'add new on admin bar', 'portfolio-card-flipping'),
-        'add_new'            => _x('Add New', 'portfolio card', 'portfolio-card-flipping'),
-        'add_new_item'       => __('Add New Portfolio Card', 'portfolio-card-flipping'),
-        'new_item'           => __('New Portfolio Card', 'portfolio-card-flipping'),
-        'edit_item'          => __('Edit Portfolio Card', 'portfolio-card-flipping'),
-        'view_item'          => __('View Portfolio Card', 'portfolio-card-flipping'),
-        'all_items'          => __('All Portfolio Cards', 'portfolio-card-flipping'),
-        'search_items'       => __('Search Portfolio Cards', 'portfolio-card-flipping'),
-        'parent_item_colon'  => __('Parent Portfolio Cards:', 'portfolio-card-flipping'),
-        'not_found'          => __('No portfolio cards found.', 'portfolio-card-flipping'),
-        'not_found_in_trash' => __('No portfolio cards found in Trash.', 'portfolio-card-flipping')
+        'name'               => _x('Card Flip', 'post type general name', 'card-flipping'),
+        'singular_name'      => _x('Card Flip', 'post type singular name', 'card-flipping'),
+        'menu_name'          => _x('Card Flip', 'admin menu', 'card-flipping'),
+        'name_admin_bar'     => _x('Card Flip', 'add new on admin bar', 'card-flipping'),
+        'add_new'            => _x('Add New', 'Card Flip Slider', 'card-flipping'),
+        'add_new_item'       => __('Add New Card Flip Slider', 'card-flipping'),
+        'new_item'           => __('New Card Flip Slider', 'card-flipping'),
+        'edit_item'          => __('Edit Card Flip Slider', 'card-flipping'),
+        'view_item'          => __('View Card Flip Slider', 'card-flipping'),
+        'all_items'          => __('All Card Flip', 'card-flipping'),
+        'search_items'       => __('Search Card Flip', 'card-flipping'),
+        'parent_item_colon'  => __('Parent Card Flip:', 'card-flipping'),
+        'not_found'          => __('No Card Flip found.', 'card-flipping'),
+        'not_found_in_trash' => __('No Card Flip found in Trash.', 'card-flipping')
     ];
 
     $args = [
@@ -196,26 +197,26 @@ add_action('init', 'register_portfolio_card_post_type');
 function create_card_slider_taxonomy()
 {
     $labels = array(
-        'name' => _x('Card Categories', 'Taxonomy General Name', 'portfolio-card-flipping'),
-        'singular_name' => _x('Slider Category', 'Taxonomy Singular Name', 'portfolio-card-flipping'),
-        'menu_name' => __('Card Categories', 'portfolio-card-flipping'),
-        'all_items' => __('All Categories', 'portfolio-card-flipping'),
-        'parent_item' => __('Parent Category', 'portfolio-card-flipping'),
-        'parent_item_colon' => __('Parent Category:', 'portfolio-card-flipping'),
-        'new_item_name' => __('New Category Name', 'portfolio-card-flipping'),
-        'add_new_item' => __('Add New Category', 'portfolio-card-flipping'),
-        'edit_item' => __('Edit Category', 'portfolio-card-flipping'),
-        'update_item' => __('Update Category', 'portfolio-card-flipping'),
-        'view_item' => __('View Category', 'portfolio-card-flipping'),
-        'separate_items_with_commas' => __('Separate categories with commas', 'portfolio-card-flipping'),
-        'add_or_remove_items' => __('Add or remove categories', 'portfolio-card-flipping'),
-        'choose_from_most_used' => __('Choose from the most used', 'portfolio-card-flipping'),
-        'popular_items' => __('Popular Categories', 'portfolio-card-flipping'),
-        'search_items' => __('Search Categories', 'portfolio-card-flipping'),
-        'not_found' => __('Not Found', 'portfolio-card-flipping'),
-        'no_terms' => __('No categories', 'portfolio-card-flipping'),
-        'items_list' => __('Categories list', 'portfolio-card-flipping'),
-        'items_list_navigation' => __('Categories list navigation', 'portfolio-card-flipping'),
+        'name' => _x('Card Categories', 'Taxonomy General Name', 'card-flipping'),
+        'singular_name' => _x('Slider Category', 'Taxonomy Singular Name', 'card-flipping'),
+        'menu_name' => __('Card Categories', 'card-flipping'),
+        'all_items' => __('All Categories', 'card-flipping'),
+        'parent_item' => __('Parent Category', 'card-flipping'),
+        'parent_item_colon' => __('Parent Category:', 'card-flipping'),
+        'new_item_name' => __('New Category Name', 'card-flipping'),
+        'add_new_item' => __('Add New Category', 'card-flipping'),
+        'edit_item' => __('Edit Category', 'card-flipping'),
+        'update_item' => __('Update Category', 'card-flipping'),
+        'view_item' => __('View Category', 'card-flipping'),
+        'separate_items_with_commas' => __('Separate categories with commas', 'card-flipping'),
+        'add_or_remove_items' => __('Add or remove categories', 'card-flipping'),
+        'choose_from_most_used' => __('Choose from the most used', 'card-flipping'),
+        'popular_items' => __('Popular Categories', 'card-flipping'),
+        'search_items' => __('Search Categories', 'card-flipping'),
+        'not_found' => __('Not Found', 'card-flipping'),
+        'no_terms' => __('No categories', 'card-flipping'),
+        'items_list' => __('Categories list', 'card-flipping'),
+        'items_list_navigation' => __('Categories list navigation', 'card-flipping'),
     );
     $args = array(
         'labels' => $labels,
