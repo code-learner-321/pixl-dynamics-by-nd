@@ -1,6 +1,6 @@
 <?php
 
-namespace Elementor_Addon_Flip_Card;
+namespace Elementor_Addon_Pixl_Dynamics;
 
 if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly.
@@ -66,11 +66,119 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__('Projects To Display', 'elementor-gallery-flip-card-widget'),
+                'label' => esc_html__('Card Settings', 'elementor-gallery-flip-card-widget'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
-
+        $this->add_responsive_control(
+            'card_width',
+            [
+                'label' => __('Card Width', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 10,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 100,
+                ],
+                'tablet_default' => [
+                    'unit' => '%',
+                    'size' => 100,
+                ],
+                'mobile_default' => [
+                    'unit' => '%',
+                    'size' => 100,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .gallery' => 'grid-template-columns: repeat(auto-fill, minmax({{SIZE}}{{UNIT}}, 1fr)) !important;',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'card_height',
+            [
+                'label' => __('Card Height', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'vh'],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 800,
+                        'step' => 1,
+                    ],
+                    'vh' => [
+                        'min' => 10,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 300,
+                ],
+                'tablet_default' => [
+                    'unit' => 'px',
+                    'size' => 250,
+                ],
+                'mobile_default' => [
+                    'unit' => 'px',
+                    'size' => 200,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .card' => 'height: {{SIZE}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'columns_gap',
+            [
+                'label' => __('Columns Gap', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 10,
+                        'step' => 0.1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .gallery' => 'gap: {{SIZE}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+        $this->add_control(
+            'order_type',
+            [
+                'label'   => __('Order Type', 'plugin-domain'),
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'ASC'  => __('Ascending (ASE)', 'plugin-domain'),
+                    'DESC' => __('Descending (DSE)', 'plugin-domain'),
+                ],
+                'default' => 'DESC',
+            ]
+        );
         $this->add_control(
             'posts_per_page',
             [
@@ -92,20 +200,6 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
             ]
         );
 
-        // Order Control
-        $this->add_control(
-            'order_type',
-            [
-                'label'   => __('Order Type', 'plugin-domain'),
-                'type'    => \Elementor\Controls_Manager::SELECT,
-                'options' => [
-                    'ASC'  => __('Ascending (ASE)', 'plugin-domain'),
-                    'DESC' => __('Descending (DSE)', 'plugin-domain'),
-                ],
-                'default' => 'DESC',
-            ]
-        );
-
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -116,7 +210,6 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
             ]
         );
 
-        
         $this->add_responsive_control(
             'border_radius',
             [
@@ -228,116 +321,6 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
                 ],
                 'condition' => [
                     'enable_reflection' => 'yes',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'section_card_dimensions',
-            [
-                'label' => esc_html__('Card Dimensions', 'plugin-name'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_responsive_control(
-            'card_width',
-            [
-                'label' => __('Card Width', 'plugin-name'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => 100,
-                        'max' => 1000,
-                        'step' => 1,
-                    ],
-                    '%' => [
-                        'min' => 10,
-                        'max' => 100,
-                        'step' => 1,
-                    ],
-                ],
-                'default' => [
-                    'unit' => '%',
-                    'size' => 100,
-                ],
-                'tablet_default' => [
-                    'unit' => '%',
-                    'size' => 100,
-                ],
-                'mobile_default' => [
-                    'unit' => '%',
-                    'size' => 100,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .gallery' => 'grid-template-columns: repeat(auto-fill, minmax({{SIZE}}{{UNIT}}, 1fr)) !important;',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'card_height',
-            [
-                'label' => __('Card Height', 'plugin-name'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px', 'vh'],
-                'range' => [
-                    'px' => [
-                        'min' => 100,
-                        'max' => 800,
-                        'step' => 1,
-                    ],
-                    'vh' => [
-                        'min' => 10,
-                        'max' => 100,
-                        'step' => 1,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 300,
-                ],
-                'tablet_default' => [
-                    'unit' => 'px',
-                    'size' => 250,
-                ],
-                'mobile_default' => [
-                    'unit' => 'px',
-                    'size' => 200,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .card' => 'height: {{SIZE}}{{UNIT}} !important;',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'columns_gap',
-            [
-                'label' => __('Columns Gap', 'plugin-name'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 100,
-                        'step' => 1,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 10,
-                        'step' => 0.1,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 20,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .gallery' => 'gap: {{SIZE}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -580,7 +563,6 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         /*ORDER TYPE*/
         $order_type = isset($settings['order_type']) ? esc_attr($settings['order_type']) : 'DESC'; // Get selected order type
 
-
         // Get current page
         $paged = max(1, get_query_var('paged'));
 
@@ -593,7 +575,6 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         ];
 
         $query = new \WP_Query($args);
-
 
         if ($query->have_posts()) {
             echo '<div class="elementor-widget-container elementor-gallery-flip-card ' . $selected_effect . '" data-effect="' . $selected_effect . '">';

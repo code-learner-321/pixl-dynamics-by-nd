@@ -1,6 +1,7 @@
 <?php
 
-namespace Elementor_Addon_Flip_Card;
+namespace Elementor_Addon_Pixl_Dynamics;
+// namespace Elementor_Addon_Link_Flow;
 
 if (! defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
@@ -116,7 +117,9 @@ final class Plugin
 	{
 
 		require_once(__DIR__ . '/widgets/elementor-card-widget.php');
+		require_once(__DIR__ . '/widgets/elementor-link-flow.php');
 
 		$widgets_manager->register(new Elementor_Gallery_Card_Widget());
+		$widgets_manager->register(new Elementor_Link_Flow_Widget());
 	}
 }

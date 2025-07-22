@@ -8,7 +8,7 @@
  * Author:            Najubudeen
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       card-flipping
+ * Text Domain:       pixl-dynamics-by-nd
  * * Requires Plugins: elementor
  */
 
@@ -16,13 +16,18 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
+// require_once plugin_dir_path(__FILE__) . 'includes/nav-walker/class-custom-nav-walker.php';
+// add_action('init', function() {
+//     require_once plugin_dir_path(__FILE__) . 'includes/nav-walker/class-custom-nav-walker.php';
+// });
+
 /* Add Elementor Widget Categorie called Pixl Dynamics By ND*/
 function add_elementor_widget_categories( $elements_manager ) {
 
 	$elements_manager->add_category(
 		'pixel-dynamics',
 		[
-			'title' => esc_html__( 'Pixl Dynamics By ND', 'textdomain' ),
+			'title' => esc_html__( 'Pixl Dynamics By ND', 'pixl-dynamics-by-nd' ),
 			'icon' => 'fa fa-plug',
 		]
 	);
@@ -35,7 +40,7 @@ if (!did_action('elementor/loaded')) {
     add_action('admin_notices', function() {
         if (!is_plugin_active('elementor/elementor.php')) {
             $message = sprintf(
-                esc_html__('Portfolio Card Flip requires %1$s to be installed and activated.', 'card-flipping'),
+                esc_html__('Portfolio Card Flip requires %1$s to be installed and activated.', 'pixl-dynamics-by-nd'),
                 '<strong>Elementor</strong>'
             );
             $html = sprintf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
@@ -46,16 +51,23 @@ if (!did_action('elementor/loaded')) {
 }
 
 
-function elementor_widget_flip_card_dependencies()
+function elementor_widget_pixl_dynamics_dependencies()
 {
     if (is_admin()) {
         return;
     }
-
     wp_enqueue_script(
         'widget-flip-card-js',
         plugins_url('assets/js/flip-card.js', __FILE__),
         ['jquery', 'elementor-frontend'],
+        null,
+        true
+    );
+    
+    wp_enqueue_script(
+        'link-flow-script-js',
+        plugins_url('assets/js/link-flow-script.js', __FILE__),
+        ['jquery'],
         null,
         true
     );
@@ -79,10 +91,19 @@ function elementor_widget_flip_card_dependencies()
         'widget-flip-card-style',
         plugins_url('assets/css/flip-card-style.css', __FILE__)
     );
+    wp_enqueue_style(
+        'widget-font-awsome-style',
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    );
+    /* styles for link flow menu */
+    wp_enqueue_style(
+        'widget-link-flow-menu-style',
+        plugins_url('assets/css/link-flow-menu-styles.css', __FILE__)
+    );
 }
-add_action('wp_enqueue_scripts', 'elementor_widget_flip_card_dependencies');
+add_action('wp_enqueue_scripts', 'elementor_widget_pixl_dynamics_dependencies');
 
-add_action('elementor/frontend/after_enqueue_styles', 'elementor_widget_flip_card_dependencies');
+add_action('elementor/frontend/after_enqueue_styles', 'elementor_widget_pixl_dynamics_dependencies');
 
 // Update the AJAX handler to return the complete HTML structure
 function handle_load_more_cards() {
@@ -158,20 +179,20 @@ add_action('wp_ajax_nopriv_load_more_cards', 'handle_load_more_cards');
 // Register Card Flip post type
 function register_portfolio_card_post_type() {
     $labels = [
-        'name'               => _x('Card Flip', 'post type general name', 'card-flipping'),
-        'singular_name'      => _x('Card Flip', 'post type singular name', 'card-flipping'),
-        'menu_name'          => _x('Card Flip', 'admin menu', 'card-flipping'),
-        'name_admin_bar'     => _x('Card Flip', 'add new on admin bar', 'card-flipping'),
-        'add_new'            => _x('Add New', 'Card Flip Slider', 'card-flipping'),
-        'add_new_item'       => __('Add New Card Flip Slider', 'card-flipping'),
-        'new_item'           => __('New Card Flip Slider', 'card-flipping'),
-        'edit_item'          => __('Edit Card Flip Slider', 'card-flipping'),
-        'view_item'          => __('View Card Flip Slider', 'card-flipping'),
-        'all_items'          => __('All Card Flip', 'card-flipping'),
-        'search_items'       => __('Search Card Flip', 'card-flipping'),
-        'parent_item_colon'  => __('Parent Card Flip:', 'card-flipping'),
-        'not_found'          => __('No Card Flip found.', 'card-flipping'),
-        'not_found_in_trash' => __('No Card Flip found in Trash.', 'card-flipping')
+        'name'               => _x('Card Flip', 'post type general name', 'pixl-dynamics-by-nd'),
+        'singular_name'      => _x('Card Flip', 'post type singular name', 'pixl-dynamics-by-nd'),
+        'menu_name'          => _x('Card Flip', 'admin menu', 'pixl-dynamics-by-nd'),
+        'name_admin_bar'     => _x('Card Flip', 'add new on admin bar', 'pixl-dynamics-by-nd'),
+        'add_new'            => _x('Add New', 'Card Flip Slider', 'pixl-dynamics-by-nd'),
+        'add_new_item'       => __('Add New Card Flip Slider', 'pixl-dynamics-by-nd'),
+        'new_item'           => __('New Card Flip Slider', 'pixl-dynamics-by-nd'),
+        'edit_item'          => __('Edit Card Flip Slider', 'pixl-dynamics-by-nd'),
+        'view_item'          => __('View Card Flip Slider', 'pixl-dynamics-by-nd'),
+        'all_items'          => __('All Card Flip', 'pixl-dynamics-by-nd'),
+        'search_items'       => __('Search Card Flip', 'pixl-dynamics-by-nd'),
+        'parent_item_colon'  => __('Parent Card Flip:', 'pixl-dynamics-by-nd'),
+        'not_found'          => __('No Card Flip found.', 'pixl-dynamics-by-nd'),
+        'not_found_in_trash' => __('No Card Flip found in Trash.', 'pixl-dynamics-by-nd')
     ];
 
     $args = [
@@ -198,26 +219,26 @@ add_action('init', 'register_portfolio_card_post_type');
 function create_card_slider_taxonomy()
 {
     $labels = array(
-        'name' => _x('Card Categories', 'Taxonomy General Name', 'card-flipping'),
-        'singular_name' => _x('Slider Category', 'Taxonomy Singular Name', 'card-flipping'),
-        'menu_name' => __('Card Categories', 'card-flipping'),
-        'all_items' => __('All Categories', 'card-flipping'),
-        'parent_item' => __('Parent Category', 'card-flipping'),
-        'parent_item_colon' => __('Parent Category:', 'card-flipping'),
-        'new_item_name' => __('New Category Name', 'card-flipping'),
-        'add_new_item' => __('Add New Category', 'card-flipping'),
-        'edit_item' => __('Edit Category', 'card-flipping'),
-        'update_item' => __('Update Category', 'card-flipping'),
-        'view_item' => __('View Category', 'card-flipping'),
-        'separate_items_with_commas' => __('Separate categories with commas', 'card-flipping'),
-        'add_or_remove_items' => __('Add or remove categories', 'card-flipping'),
-        'choose_from_most_used' => __('Choose from the most used', 'card-flipping'),
-        'popular_items' => __('Popular Categories', 'card-flipping'),
-        'search_items' => __('Search Categories', 'card-flipping'),
-        'not_found' => __('Not Found', 'card-flipping'),
-        'no_terms' => __('No categories', 'card-flipping'),
-        'items_list' => __('Categories list', 'card-flipping'),
-        'items_list_navigation' => __('Categories list navigation', 'card-flipping'),
+        'name' => _x('Card Categories', 'Taxonomy General Name', 'pixl-dynamics-by-nd'),
+        'singular_name' => _x('Slider Category', 'Taxonomy Singular Name', 'pixl-dynamics-by-nd'),
+        'menu_name' => __('Card Categories', 'pixl-dynamics-by-nd'),
+        'all_items' => __('All Categories', 'pixl-dynamics-by-nd'),
+        'parent_item' => __('Parent Category', 'pixl-dynamics-by-nd'),
+        'parent_item_colon' => __('Parent Category:', 'pixl-dynamics-by-nd'),
+        'new_item_name' => __('New Category Name', 'pixl-dynamics-by-nd'),
+        'add_new_item' => __('Add New Category', 'pixl-dynamics-by-nd'),
+        'edit_item' => __('Edit Category', 'pixl-dynamics-by-nd'),
+        'update_item' => __('Update Category', 'pixl-dynamics-by-nd'),
+        'view_item' => __('View Category', 'pixl-dynamics-by-nd'),
+        'separate_items_with_commas' => __('Separate categories with commas', 'pixl-dynamics-by-nd'),
+        'add_or_remove_items' => __('Add or remove categories', 'pixl-dynamics-by-nd'),
+        'choose_from_most_used' => __('Choose from the most used', 'pixl-dynamics-by-nd'),
+        'popular_items' => __('Popular Categories', 'pixl-dynamics-by-nd'),
+        'search_items' => __('Search Categories', 'pixl-dynamics-by-nd'),
+        'not_found' => __('Not Found', 'pixl-dynamics-by-nd'),
+        'no_terms' => __('No categories', 'pixl-dynamics-by-nd'),
+        'items_list' => __('Categories list', 'pixl-dynamics-by-nd'),
+        'items_list_navigation' => __('Categories list navigation', 'pixl-dynamics-by-nd'),
     );
     $args = array(
         'labels' => $labels,
@@ -237,6 +258,6 @@ add_action('init', 'create_card_slider_taxonomy', 0);
  /*SIngleton code starts..*/
  function elementor_card_addon() {
     require_once( __DIR__ . '/includes/plugin.php' );
-    \Elementor_Addon_Flip_Card\Plugin::instance();
+    \Elementor_Addon_Pixl_Dynamics\Plugin::instance();
 }
 add_action( 'plugins_loaded', 'elementor_card_addon' );

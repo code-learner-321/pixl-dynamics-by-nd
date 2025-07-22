@@ -1,0 +1,265 @@
+.small-screen-only,
+.large-screen-only {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .small-screen-only {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 992px) {
+  .large-screen-only {
+    display: inline-block;
+  }
+}
+
+.menu {
+  background: #035e8d;
+}
+.menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu,
+.menu a {
+  color: #e2e2e2;
+  text-decoration: none;
+}
+
+.menu a {
+  display: block;
+  white-space: nowrap;
+}
+
+.menu-dropdown,
+.menu input[type=checkbox] {
+  display: none;
+}
+
+.menu label:hover {
+  cursor: pointer;
+}
+
+/* narrow styles */
+@media screen and (max-width: 1024px) {
+
+  .menu>ul,
+  .menu-righticon {
+    display: none;
+  }
+
+  input[type=checkbox]:checked+ul {
+    display: block;
+    -webkit-animation: grow 0.5s ease-in-out;
+    animation: grow 0.5s ease-in-out;
+  }
+  nav.menu ul>li a{
+  display: flex;
+  justify-content: space-between;
+}
+}
+
+/* large styles */
+@media screen and (min-width: 1025px) {
+
+  .menu>label,
+  input[type=checkbox] {
+    display: none;
+  }
+
+  /* to adjust alignment.. */
+  .menu>ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  /* Alignment classes for desktop */
+  .menu-align-left {
+    justify-content: flex-start;
+  }
+
+  .menu-align-center {
+    justify-content: center;
+  }
+
+  .menu-align-right {
+    justify-content: flex-end;
+  }
+
+  /* THIS IS WHERE YOUR PADDING FOR LI TAG FOR TOP LEVEL GOES HERE */
+  .menu a {
+    padding: 15px 20px;
+  }
+
+  .menu>ul>li {
+    display: inline-block;
+  }
+
+  .menu-hasdropdown {
+    position: relative;
+  }
+
+  .menu-hasdropdown:hover>ul {
+    display: block;
+    -webkit-animation: grow 0.5s ease-in-out;
+    animation: grow 0.5s ease-in-out;
+  }
+
+  .menu-hasdropdown>ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    /* background: #035e8d; */
+  }
+
+  .menu-hasflyout>ul {
+    left: 100%;
+    top: 0;
+  }
+
+  .menu-hasflyout .menu-downicon {
+    display: none;
+  }
+}
+
+/* look and feel only, not needed for core menu*/
+@-webkit-keyframes grow {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  50% {
+    display: block;
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes grow {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  50% {
+    display: block;
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "Roboto" sans-serif;
+  line-height: 1.5;
+}
+
+.menu-dropdown a {
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* narrow  */
+@media screen and (max-width: 1024px) {
+  .menu>label {
+    display: block;
+    padding: 15px 20px;
+    text-align: right;
+  }
+
+  .menu a {
+    padding: 15px 20px;
+  }
+
+  .menu>ul i {
+    float: right;
+    padding: 5px 10px;
+    background-color: rgba(92, 92, 92, 0.3);
+  }
+
+}
+
+@media screen and (min-width: 1025px) {
+
+  .menu,
+  .elementor-element,
+  .e-con-full,
+  .e-flex,
+  .e-con,
+  .e-parent {
+    max-width: none !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+}
+
+/* Always hide right arrow by default */
+.menu-righticon {
+  display: none !important;
+}
+
+/* Show right arrow only on screens larger than 1024px */
+@media (min-width: 1025px) {
+  .menu-righticon {
+    display: inline-block !important;
+  }
+}
+
+/* Responsive menu width */
+.menu {
+  width: 100%;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  .menu {
+    margin: 10px auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menu {
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+
+  .menu,
+  .elementor-element,
+  .e-con-full,
+  .e-flex,
+  .e-con,
+  .e-parent {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+  }
+/* #menu-item-256 > a > label > i.fa.fa-caret-down.menu-arrow.sub-arrow-mobile */
+  i.fa.fa-caret-down {
+    font-size: 2em !important;
+  }
+  .menu>ul>li>a>label>.fa-caret-down {
+    font-size: 2em !important;
+  }
+  
+}

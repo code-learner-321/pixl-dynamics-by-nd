@@ -1,3 +1,6 @@
+.gallery{
+    grid-template-columns:none !important;
+}
 /* Reset and base styles with higher specificity */
 .elementor-widget-elementor-gallery-flip-card *,
 .elementor-widget-elementor-gallery-flip-card *:before,
@@ -50,7 +53,7 @@
 
 .elementor-widget-elementor-gallery-flip-card .card {
     width: 100% !important;
-    height: 300px !important;
+    height: 300px !important; */
     perspective: 1500px !important;
     cursor: pointer !important;
     text-decoration: none !important;
@@ -309,13 +312,13 @@
 }
 
 /* Ensure proper perspective */
-.elementor-gallery-flip-card .card {
+/* .elementor-gallery-flip-card .card {
     perspective: 1500px !important;
     -webkit-perspective: 1500px !important;
     -moz-perspective: 1500px !important;
     -ms-perspective: 1500px !important;
     -o-perspective: 1500px !important;
-}
+} */
 
 /* Ensure proper z-index stacking */
 .elementor-gallery-flip-card .card-front {
@@ -393,9 +396,9 @@
 
 .elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number:hover {
     background: #f0f0f0 !important;
-    border-color: #999 !important;
+    /* border-color: #999 !important; */
     transform: translateY(-2px) !important;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important; */
 }
 
 .elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number.current {
