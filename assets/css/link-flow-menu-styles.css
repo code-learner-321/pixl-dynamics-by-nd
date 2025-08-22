@@ -5,43 +5,24 @@
 
 /* mobile menu hamburger.. */
 .lf-hamburger {
-    position: relative;
-    width: 30px;
-    height: 24px;
-    cursor: pointer;
-    /* display: flex; */
-    /* flex-direction: column;
-    justify-content: space-between; */
-    padding: 5px;
-    z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  /* spacing between lines */
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
 }
 
 .lf-hamburger span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: #363636;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    transform-origin: center;
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #000;
+  transition: all 0.3s ease;
 }
-/* mobile Transform into cross */
-/* .menu-toggle:checked+.lf-hamburger span:nth-child(1) {
-    transform: rotate(45deg);
-    position: absolute;
-    top: 10px;
-}
-
-.menu-toggle:checked+.lf-hamburger span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle:checked+.lf-hamburger span:nth-child(3) {
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 10px;
-} */
-
 
 @media (max-width: 991px) {
   .small-screen-only {

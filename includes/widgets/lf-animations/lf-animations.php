@@ -498,6 +498,16 @@ class Animations
         $unit   = $arrow_padding['unit'] ?? 'px';
         $padding_css = "{$top}{$unit} {$right}{$unit} {$bottom}{$unit} {$left}{$unit}";
 
+        $alignment = $settings['lf_hamburger_alignment'];
+        // Map alignment to flex position
+        $align_map = [
+            'left' => 'flex-start',
+            'center' => 'center',
+            'right' => 'flex-end',
+        ];
+        $align_style = isset($align_map[$alignment]) ? $align_map[$alignment] : 'flex-start';
+
+
     ?>
         <style>
             @media screen and (min-width: 1025px) {
@@ -533,9 +543,13 @@ class Animations
                     opacity: 1;
                 }
 
+                .pixl-hamburger-wrapper {
+                    display: none;
+                }
+
             }
 
-            /* narrow styles */
+            /* TABLET AND MOBILE narrow styles */
             @media screen and (max-width: 1024px) {
 
                 .menu.<?php echo esc_attr($unique_class_css);
@@ -545,36 +559,6 @@ class Animations
                     display: none;
                 }
 
-                #<?php echo esc_attr($menu_id);
-
-                    ?>:checked+ul {
-                    display: block;
-                    -webkit-animation: grow 0.5s ease-in-out;
-                    animation: grow 0.5s ease-in-out;
-                }
-
-                
-                #<?php echo esc_attr($menu_id); ?>:checked+.nav-label span:nth-child(1) {
-                    transform: rotate(45deg);
-                    position: absolute;
-                    top: 10px;
-                }
-
-                #<?php echo esc_attr($menu_id); ?>:checked+.nav-label span:nth-child(2) {
-                    opacity: 0;
-                }
-
-                #<?php echo esc_attr($menu_id); ?>:checked+.nav-label span:nth-child(3) {
-                    transform: rotate(-45deg);
-                    position: absolute;
-                    top: 10px;
-                }
-
-
-                .submenu-toggle:checked~.menu-dropdown {
-                    display: block;
-                    animation: grow 0.5s ease-in-out;
-                }
 
                 nav.menu.<?php echo esc_attr($unique_class_css);
 
@@ -645,11 +629,6 @@ class Animations
                     justify-content: space-between;
                 }
 
-                /* nav.menu{
-                    display: flex;
-                    align-items: start;
-                    justify-content: start;
-                } */
 
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li>ul>li>label>span.submenu-arrow {
                     float: right;
@@ -670,25 +649,80 @@ class Animations
                     background-color: <?= esc_attr($settings['menu_link_arrow_label_bg_color']);
                                         ?>;
                 }
+
+                /* WORK AREA */
+                .menu-dropdown {
+                    display: none;
+                    flex-direction: column;
+                    background: #fff;
+                }
+
+                .menu.<?php echo $unique_class; ?>:has(> .pixl-hamburger-wrapper-<?php echo $unique_class; ?> #<?php echo esc_attr($menu_id); ?>:checked) > ul.menu-dropdown {
+                    display: block;
+                    animation: grow 0.3s ease-in-out;
+                }
+                @keyframes grow {
+                    0% {
+                        opacity: 0;
+                        transform: scaleY(0);
+                    }
+
+                    100% {
+                        opacity: 1;
+                        transform: scaleY(1);
+                    }
+                } */
+
+                #<?php echo esc_attr($menu_id); ?>:checked+.submenu-toggle-label .submenu-arrow {
+                    transform: rotate(180deg);
+                }
+
+                #<?php echo esc_attr($menu_id); ?>:checked+.lf-hamburger span:nth-child(1) {
+                    transform: rotate(45deg);
+                    position: absolute;
+                    top: 20px;
+                }
+
+                #<?php echo esc_attr($menu_id); ?>:checked+.lf-hamburger span:nth-child(2) {
+                    top: 10px;
+                    opacity: 0;
+                }
+
+                #<?php echo esc_attr($menu_id); ?>:checked+.lf-hamburger span:nth-child(3) {
+                    transform: rotate(-45deg);
+                    position: absolute;
+                    top: 20px;
+                }
+
+                .lf-hamburger {
+                    display: flex;
+                }
+
+                .pixl-hamburger-wrapper-<?php echo $unique_class; ?> {
+                    display: flex;
+                    justify-content: <?php echo esc_attr($align_style); ?>;
+                }
+
+
             }
         </style>
         <?php
 
         ?>
-        <!-- <i class="fa fa-bars"></i> -->
         <nav role='navigation' class="menu <?php echo $unique_class; ?>">
-            <label style="align-self: center;" for="<?php echo esc_attr($menu_id); ?>" class="nav-label lf-hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <input type="checkbox" id="<?php echo esc_attr($menu_id); ?>">
-
+            <div class="pixl-hamburger-wrapper-<?php echo $unique_class; ?>">
+                <input type="checkbox" id="<?php echo esc_attr($menu_id); ?>">
+                <label style="align-self: center;" for="<?php echo esc_attr($menu_id); ?>" class="nav-label lf-hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
             <?php
             echo wp_nav_menu(array(
                 'menu'          => $display_menu_id,
                 'container'     => false,
-                'menu_class'    => 'menu-align-' . $lf_alignment,
+                'menu_class'    => 'menu-dropdown menu-align-' . $lf_alignment,
                 'walker'        => new Custom_Nav_Walker($unique_class_css),
                 'arrow_desktop' => $show_arrow,
                 'fallback_cb'   => false,

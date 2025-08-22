@@ -436,6 +436,20 @@ class Elementor_Link_Flow_Widget extends Widget_Base
                 ],
             ]
         );
+        $this->add_control(
+        'lf_hamburger_alignment',
+        [
+            'label' => __('Hamburger Alignment', 'plugin-name'),
+            'type' => \Elementor\Controls_Manager::SELECT,
+            'default' => 'left',
+            'options' => [
+                'left' => __('Left', 'plugin-name'),
+                'center' => __('Center', 'plugin-name'),
+                'right' => __('Right', 'plugin-name'),
+            ],
+        ]
+    );
+
         $this->end_controls_section();
     }
 
