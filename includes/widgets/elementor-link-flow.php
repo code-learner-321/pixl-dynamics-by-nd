@@ -273,8 +273,26 @@ class Elementor_Link_Flow_Widget extends Widget_Base
                     'unit' => 'px',
                     'isLinked' => true,
                 ],
-                'selectors' => [
-                    '{{WRAPPER}} nav.menu ul>li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ]
+        );
+        $this->add_control('group_heading_menu_padding_submenu', [
+            'label' => esc_html__('Submenu Padding Between Links', 'plugin-name'),
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]);
+        $this->add_responsive_control(
+            'lf_submenu_link_padding',
+            [
+                'label' => esc_html__('Padding', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'default' => [
+                    'top' => '8',
+                    'right' => '8',
+                    'bottom' => '8',
+                    'left' => '8',
+                    'unit' => 'px',
+                    'isLinked' => true,
                 ],
             ]
         );
@@ -446,6 +464,27 @@ class Elementor_Link_Flow_Widget extends Widget_Base
                 'left' => __('Left', 'plugin-name'),
                 'center' => __('Center', 'plugin-name'),
                 'right' => __('Right', 'plugin-name'),
+            ],
+        ]
+    );
+    $this->add_control('group_heading_link_padding', [
+        'label' => esc_html__('Padding Between Links', 'plugin-name'),
+        'type' => \Elementor\Controls_Manager::HEADING,
+        'separator' => 'before',
+    ]);
+
+    $this->add_control(
+        'lf_link_padding_mobile',
+        [
+            'label' => __('Padding', 'plugin-domain'),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em'],
+            'default' => [
+                'top' => '8',
+                'right' => '8',
+                'bottom' => '8',
+                'left' => '8',
+                'unit' => 'px',
             ],
         ]
     );
