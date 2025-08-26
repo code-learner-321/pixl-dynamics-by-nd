@@ -407,10 +407,10 @@ class Elementor_Link_Flow_Widget extends Widget_Base
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'default' => [
-                    'top' => '8',
-                    'right' => '8',
-                    'bottom' => '8',
-                    'left' => '8',
+                    'top' => '0',
+                    'right' => '0',
+                    'bottom' => '0',
+                    'left' => '0',
                     'unit' => 'px',
                 ],
             ]
@@ -426,7 +426,7 @@ class Elementor_Link_Flow_Widget extends Widget_Base
             [
                 'label' => esc_html__('Arrow Label Background', 'textdomain'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => 'rgba(189, 189, 189, 0.3)',
+                'default' => 'rgba(255, 255, 255, 0.3)',
             ]
         );
 
@@ -450,7 +450,7 @@ class Elementor_Link_Flow_Widget extends Widget_Base
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 25,
+                    'size' => 12,
                 ],
             ]
         );

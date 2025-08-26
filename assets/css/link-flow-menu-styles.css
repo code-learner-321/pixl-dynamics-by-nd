@@ -180,9 +180,9 @@ body {
     padding: 10px !important;
   }
 
-  .menu a {
+  /* .menu a {
     padding: 15px 20px;
-  }
+  } */
 
   .menu>ul i {
     float: right;

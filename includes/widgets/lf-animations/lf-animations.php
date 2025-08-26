@@ -692,18 +692,8 @@ class Animations
                 .menu.<?php echo $unique_class; ?>:has(> .pixl-hamburger-wrapper-<?php echo $unique_class; ?> #<?php echo esc_attr($menu_id); ?>:checked)>ul.menu-dropdown {
                     display: block;
                     animation: grow 0.3s ease-in-out;
+                    margin-top: 10px;
                 }
-
-                /* Submenu dropdown display for all levels */
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked~.menu-dropdown {
-                    display: block;
-                    animation: grow 0.3s ease-in-out;
-                }
-
                 @keyframes grow {
                     0% {
                         opacity: 0;
@@ -715,7 +705,6 @@ class Animations
                         transform: scaleY(1);
                     }
                 }
-
 
                 /* Arrow styling and rotation for all submenu levels */
                 .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
@@ -730,19 +719,16 @@ class Animations
                     cursor: pointer;
                     display: inline-block;
                     padding: 5px;
+                    line-height: 0px !important;
                 }
 
-                /* Arrow rotation when checked */
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow {
-                    transform: rotate(180deg);
-                }
-
-                /* Arrow rotation for nested submenu levels */
+                /* Arrow rotation when checked - consolidated rule for all levels */
+                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
                 .menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
                 .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
                 .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
                 .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow {
-                    transform: rotate(180deg);
+                    transform: rotate(180deg) !important;
                 }
 
                 #<?php echo esc_attr($menu_id); ?>:checked+.lf-hamburger span:nth-child(1) {
@@ -774,8 +760,16 @@ class Animations
 
                 /* Link padding for tablet and mobile */
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>> ul li {
-                    padding: <?php echo esc_attr($link_padding_mobile_css);
-                                ?>;
+                    padding: <?php echo esc_attr($link_padding_mobile_css);?>;
+                    border-top: 1px solid #c5c5c5ff;
+                }
+                /* Link padding for tablet and mobile for second and above*/
+                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li ul li {
+                    padding-top:8px;
+                    padding-bottom:8px;
+                    padding-left:0px;
+                    padding-right:0px;
+                    
                 }
 
             }
