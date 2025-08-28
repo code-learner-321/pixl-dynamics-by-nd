@@ -610,7 +610,7 @@ class Animations
 
             /* Remove padding for all submenu depths on large screen */
             nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li {
-                padding: 0;
+                padding: <?php echo esc_attr($submenu_link_padding_css); ?>;
             }
 
             /* TABLET AND MOBILE narrow styles */
