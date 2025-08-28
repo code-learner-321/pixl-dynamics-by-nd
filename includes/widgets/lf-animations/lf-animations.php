@@ -65,41 +65,41 @@ class Animations
                     justify-content: space-between;
                 }
 
-                .menu.<?php echo esc_attr($unique_class_css); ?> .menu-dropdown {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.menu-dropdown {
                     display: none;
                 }
 
                 /* Submenu dropdown display for all levels */
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked~.menu-dropdown {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li ul li .submenu-toggle:checked~.menu-dropdown {
                     display: block;
                     animation: grow 0.5s ease-in-out;
                 }
 
                 /* Arrow rotation for all submenu levels */
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-arrow {
                     transform: rotate(0deg);
                     transition: transform 0.3s;
                 }
 
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow {
                     transform: rotate(180deg);
                 }
 
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle,
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle-label {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle,
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle-label {
                     display: inline-block;
                     cursor: pointer;
                 }
 
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle-label {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle-label {
                     margin-left: 8px;
                 }
 
@@ -181,35 +181,35 @@ class Animations
 
                 /* Submenu dropdown display for all levels */
                 .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked~.menu-dropdown {
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li ul li .submenu-toggle:checked~.menu-dropdown {
                     display: block;
                     animation: grow 0.5s ease-in-out;
                 }
 
                 /* Arrow rotation for all submenu levels */
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-arrow {
                     transform: rotate(0deg);
                     transition: transform 0.3s;
                 }
 
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow {
                     transform: rotate(180deg);
                 }
 
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle,
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle-label {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle,
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle-label {
                     display: inline-block;
                     cursor: pointer;
                 }
 
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle-label {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle-label {
                     margin-left: 8px;
                 }
             }
@@ -343,25 +343,25 @@ class Animations
 
                 /* Submenu dropdown display for all levels */
                 .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked~.menu-dropdown {
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li ul li .submenu-toggle:checked~.menu-dropdown {
                     display: block;
                     animation: grow 0.5s ease-in-out;
                 }
 
                 /* Arrow rotation for all submenu levels */
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-arrow {
                     transform: rotate(0deg);
                     transition: transform 0.3s;
                 }
 
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow {
                     transform: rotate(180deg);
                 }
 
@@ -416,7 +416,7 @@ class Animations
             }
 
             @media screen and (max-width: 1024px) {
-                .submenu-toggle-label {
+                /* .submenu-toggle-label {
 
                     position: relative;
                     padding: <?php echo esc_attr($padding_css);
@@ -425,8 +425,7 @@ class Animations
                     justify-content: center;
                     align-items: center;
                     width: fit-content;
-                    margin-left: 50px;
-                }
+                } */
 
                 .submenu-toggle-label,
                 .submenu-toggle-label span.submenu-arrow {
@@ -455,25 +454,25 @@ class Animations
 
                 /* Submenu dropdown display for all levels */
                 .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked~.menu-dropdown,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked~.menu-dropdown {
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li .submenu-toggle:checked~.menu-dropdown,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li ul li .submenu-toggle:checked~.menu-dropdown {
                     display: block;
                     animation: grow 0.5s ease-in-out;
                 }
 
                 /* Arrow rotation for all submenu levels */
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-arrow {
                     transform: rotate(0deg);
                     transition: transform 0.3s;
                 }
 
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
+                .menu.<?php echo esc_attr($unique_class_css); ?>ul li ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow {
                     transform: rotate(180deg);
                 }
             }
@@ -503,10 +502,10 @@ class Animations
         $menu_id = 'menu-toggle-double-' . $unique_class_css;
 
         $arrow_padding = $settings['lf_label_padding'] ?? [];
-        $top    = isset($arrow_padding['top'])    ? $arrow_padding['top']    : '0';
-        $right  = isset($arrow_padding['right'])  ? $arrow_padding['right']  : '0';
-        $bottom = isset($arrow_padding['bottom']) ? $arrow_padding['bottom'] : '0';
-        $left   = isset($arrow_padding['left'])   ? $arrow_padding['left']   : '0';
+        $top    = isset($arrow_padding['top'])    ? $arrow_padding['top']    : '8';
+        $right  = isset($arrow_padding['right'])  ? $arrow_padding['right']  : '8';
+        $bottom = isset($arrow_padding['bottom']) ? $arrow_padding['bottom'] : '8';
+        $left   = isset($arrow_padding['left'])   ? $arrow_padding['left']   : '8';
         $unit   = $arrow_padding['unit'] ?? 'px';
         $padding_css = "{$top}{$unit} {$right}{$unit} {$bottom}{$unit} {$left}{$unit}";
 
@@ -554,16 +553,29 @@ class Animations
     ?>
         <style>
             @media screen and (min-width: 1025px) {
-                nav.menu.<?php echo esc_attr($unique_class_css);?>>ul {
+                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul {
                     list-style: none;
                     position: relative;
                     display: flex;
                     gap: 0px;
                 }
 
-                nav.menu.<?php echo esc_attr($unique_class_css);?>>ul>li>a {
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li > a {
                     text-transform: capitalize;
+                }
 
+                /* Ensure link and arrow label sit inline on desktop */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li > a,
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li > label.submenu-toggle-label {
+                    display: inline-flex;
+                    align-items: center;
+                    vertical-align: middle;
+                }
+
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li > label.submenu-toggle-label > span.submenu-arrow {
+                    display: inline-block;
+                    float: none;
+                    margin-left: 8px;
                 }
 
                 nav.menu.<?php echo esc_attr($unique_class_css);
@@ -590,15 +602,15 @@ class Animations
                     display: none;
                 }
             }
+
             /* Link padding for large screen */
             nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li {
-                padding: <?php echo esc_attr($link_padding_css);?>;
+                padding: <?php echo esc_attr($link_padding_css); ?>;
             }
 
-            /* Submenu link padding for large screen */
-            nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li> ul li {
-                padding: <?php echo esc_attr($submenu_link_padding_css);
-                            ?>;
+            /* Remove padding for all submenu depths on large screen */
+            nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li {
+                padding: 0;
             }
 
             /* TABLET AND MOBILE narrow styles */
@@ -610,13 +622,18 @@ class Animations
                 }
 
 
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li {
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li {
                     position: relative;
                     display: flex;
                     flex-wrap: wrap;
                     align-items: center;
-                }
 
+                }
+                /* Remove padding for all submenu depths on mobile */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li {
+                    padding: 0;
+                }
+                
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li>a,
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li>label {
                     flex: 1 1 auto;
@@ -633,19 +650,18 @@ class Animations
                                         ?>;
                 }
 
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li>ul {
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul {
                     width: 100%;
                 }
 
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li>ul>li>a,
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li>ul>li>label {
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li > a,
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li > label {
                     flex: 1 1 auto;
-                    ?>;
                 }
 
 
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li ul li a {
-                    flat: :left;
+                    float: left;
                 }
 
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li ul li label {
@@ -670,10 +686,11 @@ class Animations
                                 ?>;
                     background-color: <?= esc_attr($settings['menu_link_arrow_label_bg_color']);
                                         ?>;
-
                 }
 
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li ul li label span.submenu-arrow {
+                /* Apply arrow alignment and styling to all submenu depths */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li label > span.submenu-arrow {
+                    float: right;
                     padding: <?= esc_attr($padding_css);
                                 ?>;
                     font-size: <?= esc_attr($settings['lf_arrow_size']['size'] . $settings['lf_arrow_size']['unit']);
@@ -694,6 +711,7 @@ class Animations
                     animation: grow 0.3s ease-in-out;
                     margin-top: 10px;
                 }
+
                 @keyframes grow {
                     0% {
                         opacity: 0;
@@ -706,8 +724,8 @@ class Animations
                     }
                 }
 
-                /* Arrow styling and rotation for all submenu levels */
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
+                /* Arrow styling */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
                     transform: rotate(0deg);
                     transition: transform 0.3s ease;
                     display: inline-block;
@@ -715,20 +733,32 @@ class Animations
                     color: #333;
                 }
 
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle-label {
+                .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle-label {
                     cursor: pointer;
-                    display: inline-block;
-                    padding: 5px;
-                    line-height: 0px !important;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    line-height: normal;
+                    width: 100%;
                 }
 
                 /* Arrow rotation when checked - consolidated rule for all levels */
-                .menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow,
-                .menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked+.submenu-toggle-label .submenu-arrow {
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked + .submenu-toggle-label .submenu-arrow,
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked + .submenu-toggle-label .submenu-arrow,
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked + .submenu-toggle-label .submenu-arrow,
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked + .submenu-toggle-label .submenu-arrow,
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked + .submenu-toggle-label .submenu-arrow {
                     transform: rotate(180deg) !important;
+                }
+
+                /* Ensure submenu dropdowns open at all depths when toggles are checked */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked ~ .menu-dropdown,
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked ~ .menu-dropdown,
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li .submenu-toggle:checked ~ .menu-dropdown,
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li .submenu-toggle:checked ~ .menu-dropdown,
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked ~ .menu-dropdown {
+                    display: block;
+                    animation: grow 0.3s ease-in-out;
                 }
 
                 #<?php echo esc_attr($menu_id); ?>:checked+.lf-hamburger span:nth-child(1) {
@@ -758,22 +788,87 @@ class Animations
                 }
 
 
-                /* Link padding for tablet and mobile */
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>> ul li {
-                    padding: <?php echo esc_attr($link_padding_mobile_css);?>;
+                /* Link padding for tablet and mobile (top-level only) */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul > li {
+                    padding: <?php echo esc_attr($link_padding_mobile_css); ?>;
                     border-top: 1px solid #c5c5c5ff;
+                
                 }
-                /* Link padding for tablet and mobile for second and above*/
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li ul li {
-                    padding-top:8px;
-                    padding-bottom:8px;
-                    padding-left:0px;
-                    padding-right:0px;
+                
+                /* Add padding to anchor tags inside list items that don't have .menu-hasdropdown class */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li:not(.menu-hasdropdown) > a {
+                    padding: <?php echo esc_attr($link_padding_mobile_css);?>;
+                }
+                
+                /* Allow pointer events on anchor tags inside dropdown items for mobile interaction */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li.menu-hasdropdown > label > a {
+                    pointer-events: auto;
+                    cursor: pointer;
+                }
                     
-                }
+              nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li > label.submenu-toggle-label{
+                    padding: <?php echo esc_attr($link_padding_mobile_css);?>;
+              }                  
+              nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li{
+                align-items:center;
+              }
+              nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li > label.submenu-toggle-label{
+                padding-left:<?php echo esc_attr($link_padding_mobile_left); ?>px;
+              }
+              /* Center contents inside labels and neutralize floats for arrow when inside label */
+              nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li > label.submenu-toggle-label,
+              nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li > label.submenu-toggle-label {
+                display: inline-flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+              }
+              nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li > label.submenu-toggle-label > a,
+              nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li > label.submenu-toggle-label > a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex: 1 1 auto;
+                text-align: left;
+              }
+              nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li > label.submenu-toggle-label > span.submenu-arrow,
+              nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li > label.submenu-toggle-label > span.submenu-arrow {
+                float: none;
+                margin-left: 8px;
+              }
 
             }
         </style>
+        
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle anchor tag clicks in dropdown items for mobile/tablet
+            const dropdownAnchors = document.querySelectorAll('nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li.menu-hasdropdown > label > a');
+            
+            dropdownAnchors.forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    // Only handle on mobile/tablet screens
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Find the associated checkbox and toggle it
+                        const label = this.closest('label');
+                        const checkbox = document.getElementById(label.getAttribute('for'));
+                        
+                        if (checkbox) {
+                            checkbox.checked = !checkbox.checked;
+                            
+                            // Trigger change event to ensure CSS animations work
+                            const event = new Event('change', { bubbles: true });
+                            checkbox.dispatchEvent(event);
+                        }
+                    }
+                });
+            });
+        });
+        </script>
+        
         <?php
 
         ?>

@@ -179,11 +179,6 @@ body {
   nav.menu {
     padding: 10px !important;
   }
-
-  /* .menu a {
-    padding: 15px 20px;
-  } */
-
   .menu>ul i {
     float: right;
     padding: 5px 10px;
@@ -231,11 +226,11 @@ body {
 /* Responsive menu width */
 .menu {
   width: 100%;
-  margin: 20px auto;
+  margin: 0px auto;
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) {
   .menu {
     margin: 10px auto;
   }
@@ -246,31 +241,4 @@ body {
     margin: 0;
     border-radius: 0;
   }
-}
-
-@media screen and (max-width: 1024px) {
-
-  .menu,
-  .elementor-element,
-  .e-con-full,
-  .e-flex,
-  .e-con,
-  .e-parent {
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box;
-  }
-
-  /* #menu-item-256 > a > label > i.fa.fa-caret-down.menu-arrow.sub-arrow-mobile */
-  i.fa.fa-caret-down {
-    font-size: 2em !important;
-  }
-
-  .menu>ul>li>a>label>.fa-caret-down {
-    font-size: 2em !important;
-  }
-
-  nav.menu>ul>li>a:hover {
-    color: inherit !important;
-  }
-}
+} */

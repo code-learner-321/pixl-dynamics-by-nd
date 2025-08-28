@@ -407,10 +407,10 @@ class Elementor_Link_Flow_Widget extends Widget_Base
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'default' => [
-                    'top' => '0',
-                    'right' => '0',
-                    'bottom' => '0',
-                    'left' => '0',
+                    'top' => '8',
+                    'right' => '8',
+                    'bottom' => '8',
+                    'left' => '8',
                     'unit' => 'px',
                 ],
             ]
