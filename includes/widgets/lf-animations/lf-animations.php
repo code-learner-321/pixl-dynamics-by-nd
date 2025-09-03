@@ -39,6 +39,13 @@ class Animations
                             ?>>ul>li:hover::before {
                     transform: scale(1, 1);
                 }
+
+                <?php if ($show_arrow !== 'yes'): ?>
+                /* Hide arrows on big screens when submenu_arrow_toggle is disabled */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
+                    display: none !important;
+                }
+                <?php endif; ?>
             }
 
             @media screen and (max-width: 1024px) {
@@ -153,6 +160,13 @@ class Animations
                             ?>>ul>li:hover::after {
                     transform: scale(1, 1);
                 }
+
+                <?php if ($show_arrow !== 'yes'): ?>
+                /* Hide arrows on big screens when submenu_arrow_toggle is disabled */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
+                    display: none !important;
+                }
+                <?php endif; ?>
             }
 
             @media screen and (max-width: 1024px) {
@@ -313,6 +327,13 @@ class Animations
                     transform: scale(1);
                     opacity: 1;
                 }
+
+                <?php if ($show_arrow !== 'yes'): ?>
+                /* Hide arrows on big screens when submenu_arrow_toggle is disabled */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
+                    display: none !important;
+                }
+                <?php endif; ?>
             }
 
             @media screen and (max-width: 1024px) {
@@ -412,7 +433,19 @@ class Animations
 
         <style>
             @media screen and (min-width: 1025px) {
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul
+                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul {
+                    list-style: none;
+                    position: relative;
+                    display: flex;
+                    gap: 0px;
+                }
+
+                <?php if ($show_arrow !== 'yes'): ?>
+                /* Hide arrows on big screens when submenu_arrow_toggle is disabled */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
+                    display: none !important;
+                }
+                <?php endif; ?>
             }
 
             @media screen and (max-width: 1024px) {
@@ -583,9 +616,6 @@ class Animations
                             ?>>ul>li {
                     position: relative;
                 }
-
-
-
                 nav.menu.<?php echo esc_attr($unique_class_css);
 
                             ?>>ul>li>a:hover::after {
@@ -593,53 +623,52 @@ class Animations
                     right: -8px;
                     opacity: 1;
                 }
-
                 .pixl-hamburger-wrapper {
                     display: none;
                 }
-
                 .pixl-hamburger-wrapper-<?php echo $unique_class; ?> {
                     display: none;
                 }
+                <?php if ($show_arrow !== 'yes'): ?>
+                /* Hide arrows on big screens when submenu_arrow_toggle is disabled */
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
+                    display: none !important;
+                }
+                <?php endif; ?>
+                nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li label span.submenu-arrow{
+                transform: rotate(30deg);
             }
-
+            }
             /* Link padding for large screen */
             nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li {
                 padding: <?php echo esc_attr($link_padding_css); ?>;
             }
-
             /* Remove padding for all submenu depths on large screen */
             nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li {
                 padding: <?php echo esc_attr($submenu_link_padding_css); ?>;
             }
-
+            
             /* TABLET AND MOBILE narrow styles */
             @media screen and (max-width: 1024px) {
-
                 .menu.<?php echo esc_attr($unique_class_css); ?>>ul,
                 .menu-righticon {
                     display: none;
                 }
-
-
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li {
                     position: relative;
                     display: flex;
                     flex-wrap: wrap;
                     align-items: center;
-
                 }
                 /* Remove padding for all submenu depths on mobile */
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li {
                     padding: 0;
                 }
-                
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li>a,
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li>label {
                     flex: 1 1 auto;
                     float: right
                 }
-
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li>label>span.submenu-arrow {
                     float: right;
                     padding: <?= esc_attr($padding_css);
@@ -649,25 +678,19 @@ class Animations
                     background-color: <?= esc_attr($settings['menu_link_arrow_label_bg_color']);
                                         ?>;
                 }
-
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul {
                     width: 100%;
                 }
-
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li > a,
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li > label {
                     flex: 1 1 auto;
                 }
-
-
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li ul li a {
                     float: left;
                 }
-
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li ul li label {
                     float: right;
                 }
-
                 nav.menu>label.nav-label {
                     /* background-color: red; */
                     display: flex;
@@ -676,8 +699,6 @@ class Animations
                     flex-direction: column;
                     justify-content: space-between;
                 }
-
-
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li>ul>li>label>span.submenu-arrow {
                     float: right;
                     padding: <?= esc_attr($padding_css);
@@ -687,7 +708,6 @@ class Animations
                     background-color: <?= esc_attr($settings['menu_link_arrow_label_bg_color']);
                                         ?>;
                 }
-
                 /* Apply arrow alignment and styling to all submenu depths */
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li label > span.submenu-arrow {
                     float: right;
@@ -698,20 +718,17 @@ class Animations
                     background-color: <?= esc_attr($settings['menu_link_arrow_label_bg_color']);
                                         ?>;
                 }
-
                 /* WORK AREA */
                 .menu-dropdown {
                     display: none;
                     flex-direction: column;
                     background: #fff;
                 }
-
                 .menu.<?php echo $unique_class; ?>:has(> .pixl-hamburger-wrapper-<?php echo $unique_class; ?> #<?php echo esc_attr($menu_id); ?>:checked)>ul.menu-dropdown {
                     display: block;
                     animation: grow 0.3s ease-in-out;
                     margin-top: 10px;
                 }
-
                 @keyframes grow {
                     0% {
                         opacity: 0;
@@ -723,16 +740,14 @@ class Animations
                         transform: scaleY(1);
                     }
                 }
-
                 /* Arrow styling */
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> .submenu-arrow {
                     transform: rotate(0deg);
                     transition: transform 0.3s ease;
                     display: inline-block;
-                    font-size: 12px;
+                    /* font-size: 12px; */
                     color: #333;
                 }
-
                 .menu.<?php echo esc_attr($unique_class_css); ?>.submenu-toggle-label {
                     cursor: pointer;
                     display: inline-flex;
@@ -741,7 +756,6 @@ class Animations
                     line-height: normal;
                     width: 100%;
                 }
-
                 /* Arrow rotation when checked - consolidated rule for all levels */
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked + .submenu-toggle-label .submenu-arrow,
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked + .submenu-toggle-label .submenu-arrow,
@@ -750,7 +764,6 @@ class Animations
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li ul li ul li .submenu-toggle:checked + .submenu-toggle-label .submenu-arrow {
                     transform: rotate(180deg) !important;
                 }
-
                 /* Ensure submenu dropdowns open at all depths when toggles are checked */
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> .submenu-toggle:checked ~ .menu-dropdown,
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li .submenu-toggle:checked ~ .menu-dropdown,
@@ -760,52 +773,41 @@ class Animations
                     display: block;
                     animation: grow 0.3s ease-in-out;
                 }
-
                 #<?php echo esc_attr($menu_id); ?>:checked+.lf-hamburger span:nth-child(1) {
                     transform: rotate(45deg);
                     position: absolute;
                     top: 20px;
                 }
-
                 #<?php echo esc_attr($menu_id); ?>:checked+.lf-hamburger span:nth-child(2) {
                     top: 10px;
                     opacity: 0;
                 }
-
                 #<?php echo esc_attr($menu_id); ?>:checked+.lf-hamburger span:nth-child(3) {
                     transform: rotate(-45deg);
                     position: absolute;
                     top: 20px;
                 }
-
                 .lf-hamburger {
                     display: flex;
                 }
-
                 .pixl-hamburger-wrapper-<?php echo $unique_class; ?> {
                     display: flex;
                     justify-content: <?php echo esc_attr($align_style); ?>;
                 }
-
-
                 /* Link padding for tablet and mobile (top-level only) */
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul > li {
                     padding: <?php echo esc_attr($link_padding_mobile_css); ?>;
                     border-top: 1px solid #c5c5c5ff;
-                
                 }
-                
                 /* Add padding to anchor tags inside list items that don't have .menu-hasdropdown class */
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li:not(.menu-hasdropdown) > a {
                     padding: <?php echo esc_attr($link_padding_mobile_css);?>;
                 }
-                
                 /* Allow pointer events on anchor tags inside dropdown items for mobile interaction */
                 nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li.menu-hasdropdown > label > a {
                     pointer-events: auto;
                     cursor: pointer;
                 }
-                    
               nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li > label.submenu-toggle-label{
                     padding: <?php echo esc_attr($link_padding_mobile_css);?>;
               }                  
@@ -836,7 +838,11 @@ class Animations
                 float: none;
                 margin-left: 8px;
               }
-
+              nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li{
+                border-top: 1px solid #c5c5c5ff;
+              }
+              nav.menu.<?php echo esc_attr($unique_class_css); ?> ul li ul li:not(:has(.menu-dropdown)) {
+                border-top: none;
             }
         </style>
         

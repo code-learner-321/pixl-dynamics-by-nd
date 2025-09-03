@@ -63,122 +63,60 @@
 }
 
 
-/* large styles */
-@media screen and (min-width: 1025px) {
-
-  .menu>label,
-  input[type=checkbox] {
-    display: none;
-  }
-
-  /* to adjust alignment.. */
-  .menu>ul {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  /* Alignment classes for desktop */
-  .menu-align-left {
-    justify-content: flex-start;
-  }
-
-  .menu-align-center {
-    justify-content: center;
-  }
-
-  .menu-align-right {
-    justify-content: flex-end;
-  }
-
-  .menu>ul>li {
-    display: flex;
-  }
-
-  .menu-hasdropdown {
-    position: relative;
-    display: flex;
-  }
-
-  .menu-hasdropdown:hover>ul {
-    display: block;
-    -webkit-animation: grow 0.5s ease-in-out;
-    animation: grow 0.5s ease-in-out;
-  }
-
-  .menu-hasdropdown>ul {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    /* background: #035e8d; */
-  }
-
-  .menu-hasflyout>ul {
-    left: 100%;
-    top: 0;
-  }
-
-
-  .menu-hasflyout .menu-downicon {
-    display: none;
-  }
-}
-
 /* look and feel only, not needed for core menu*/
 @-webkit-keyframes grow {
   0% {
     display: none;
     opacity: 0;
   }
-
   50% {
     display: block;
     opacity: 0.5;
   }
-
   100% {
     opacity: 1;
   }
 }
-
 @keyframes grow {
   0% {
     display: none;
     opacity: 0;
   }
-
   50% {
     display: block;
     opacity: 0.5;
   }
-
   100% {
     opacity: 1;
   }
 }
-
 html {
   font-size: 100%;
 }
-
 body {
   font-family: "Roboto" sans-serif;
-  line-height: 1.5;
+  /* line-height: 1.5; */
 }
-
 .menu-dropdown {
   /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
   border: 1px solid hsla(0, 0%, 100%, 0.4);
 }
-
+/* Always hide right arrow by default */
+.menu-righticon {
+  display: none !important;
+}
+/* Responsive menu width */
+.menu {
+  width: 100%;
+  margin: 0px auto;
+  box-sizing: border-box;
+}
 /* narrow  */
 @media screen and (max-width: 1024px) {
-
   nav.menu {
     padding: 10px !important;
   }
+
   .menu>ul i {
     float: right;
     padding: 5px 10px;
@@ -196,9 +134,55 @@ body {
     display: inline-block;
   }
 }
-
+/* large styles */
 @media screen and (min-width: 1025px) {
-
+  .menu>label,
+  input[type=checkbox] {
+    display: none;
+  }
+  /* to adjust alignment.. */
+  .menu>ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  /* Alignment classes for desktop */
+  .menu-align-left {
+    justify-content: flex-start;
+  }
+  .menu-align-center {
+    justify-content: center;
+  }
+  .menu-align-right {
+    justify-content: flex-end;
+  }
+  .menu>ul>li {
+    display: flex;
+  }
+  .menu-hasdropdown {
+    position: relative;
+    display: flex;
+  }
+  .menu-hasdropdown:hover>ul {
+    display: block;
+    -webkit-animation: grow 0.5s ease-in-out;
+    animation: grow 0.5s ease-in-out;
+  }
+  .menu-hasdropdown>ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    /* background: #035e8d; */
+  }
+  .menu-hasflyout>ul {
+    left: 100%;
+    top: 0;
+  }
+  .menu-hasflyout .menu-downicon {
+    display: none;
+  }
   .menu,
   .elementor-element,
   .e-con-full,
@@ -210,35 +194,3 @@ body {
     box-sizing: border-box;
   }
 }
-
-/* Always hide right arrow by default */
-.menu-righticon {
-  display: none !important;
-}
-
-/* Show right arrow only on screens larger than 1024px */
-@media (min-width: 1025px) {
-  .menu-righticon {
-    display: inline-block !important;
-  }
-}
-
-/* Responsive menu width */
-.menu {
-  width: 100%;
-  margin: 0px auto;
-  box-sizing: border-box;
-}
-
-/* @media screen and (max-width: 1024px) {
-  .menu {
-    margin: 10px auto;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .menu {
-    margin: 0;
-    border-radius: 0;
-  }
-} */

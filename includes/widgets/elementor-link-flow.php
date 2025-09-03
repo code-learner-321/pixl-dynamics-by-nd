@@ -221,13 +221,13 @@ class Elementor_Link_Flow_Widget extends Widget_Base
             ]
         );
         $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'label' => esc_html__('Menu Link', 'custom-elementor-widget'),
-                'name' => 'content_typography',
-                'selector' => '{{WRAPPER}} nav.menu> ul > li a',
-            ]
-        );
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Menu Link', 'custom-elementor-widget'),
+        'name' => 'content_typography',
+        'selector' => '{{WRAPPER}} nav.menu a.menu-link',
+    ]
+);
         $this->end_controls_section();
         // typography for menu links...
 
