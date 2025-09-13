@@ -3,9 +3,9 @@
 namespace Elementor_Addon_Pixl_Dynamics;
 
 // animation controls
-// require_once plugin_dir_path(__FILE__) . 'conditional-controls/conditional_controls.php';
+require_once plugin_dir_path(__FILE__) . 'conditional-controls/conditional_controls.php';
 
-// use Lf\LinkFlowControls\HoverAnimations\ConditionalControls\LfConditionalControls;
+use Lf\LinkFlowControls\HoverAnimations\ConditionalControls\LfConditionalControls;
 
 class LfControls
 {
@@ -59,6 +59,38 @@ class LfControls
         );
         $widget->end_controls_section();
     }
+    public static function lf_margin($widget_margin)
+    {
+        $widget_margin->start_controls_section(
+            'section_margin',
+            [
+                'label' => __('Menu Margin', 'plugin-name'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $widget_margin->add_responsive_control(
+            'menu_margin',
+            [
+                'label' => esc_html__('Margin', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'default' => [
+                    'top' => '8',
+                    'right' => '0',
+                    'bottom' => '0',
+                    'left' => '0',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .lf-pixl-nav-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $widget_margin->end_controls_section();
+    }
     public static function typography($widget_typography)
     {
         // typography for menu links...
@@ -75,6 +107,15 @@ class LfControls
                 'label' => esc_html__('Menu Link', 'custom-elementor-widget'),
                 'name' => 'content_typography',
                 'selector' => '{{WRAPPER}} nav.menu a.menu-link',
+                'fields_options' => [
+                    'font_size' => [
+                        'default' => [
+                            'size' => 16,
+                            'unit' => 'px',
+                        ],
+                    ],
+                ],
+
             ]
         );
         $widget_typography->end_controls_section();
@@ -139,10 +180,10 @@ class LfControls
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'default' => [
-                    'top' => '8',
-                    'right' => '8',
-                    'bottom' => '8',
-                    'left' => '8',
+                    'top' => '12',
+                    'right' => '12',
+                    'bottom' => '12',
+                    'left' => '12',
                     'unit' => 'px',
                     'isLinked' => true,
                 ],
@@ -169,7 +210,7 @@ class LfControls
             [
                 'label' => esc_html__('Color', 'plugin-name'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#f2f2f2ff',
+                'default' => '#f8f9fa',
                 'selectors' => [
                     '{{WRAPPER}} nav.menu' => 'background-color: {{VALUE}};',
                 ],
@@ -181,9 +222,10 @@ class LfControls
             [
                 'label' => esc_html__('Text Color', 'plugin-name'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#505050ff',
+                'default' => '#505050',
                 'selectors' => [
-                    '{{WRAPPER}} nav.menu > ul > li > a' => 'color: {{VALUE}};','{{WRAPPER}} nav.menu > ul > li > label > a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} nav.menu > ul > li > a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} nav.menu > ul > li > label > a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -197,7 +239,7 @@ class LfControls
             [
                 'label' => esc_html__('Color', 'plugin-name'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#f0f0f0ff',
+                'default' => '#e9ecef',
                 'selectors' => [
                     '{{WRAPPER}} .lf-sub-menu-bg' => 'background-color: {{VALUE}};',
                 ],
@@ -208,7 +250,7 @@ class LfControls
             [
                 'label' => esc_html__('Text Color', 'plugin-name'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#5a5a5aff',
+                'default' => '#505050',
                 'selectors' => [
                     '{{WRAPPER}} nav.menu ul ul li a' => 'color: {{VALUE}};',
                 ],
@@ -216,62 +258,12 @@ class LfControls
         );
         $widget_menu_background->end_controls_section();
     }
-    public static function mobile_label_styles($widget_mobile_label_styles)
+    public static function lfmobile_menu_settings($widget_mobile_label_styles)
     {
-        // Hover Top background color....
-        $widget_mobile_label_styles->start_controls_section(
-            'menu-hover-bg',
-            [
-                'label' => __('Hover Background', 'plugin-name'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'lf_menu_animations' => 'top_underline',
-                ],
-            ]
-        );
-        $widget_mobile_label_styles->add_control(
-            'navbar_hover_bg_color',
-            [
-                'label' => esc_html__('Color', 'plugin-name'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#747474',
-                'condition' => [
-                    'lf_menu_animations' => 'top_underline',
-                ],
-            ]
-        );
-        $widget_mobile_label_styles->end_controls_section();
-        // Hover background color....
-
-        // Hover Bottom background color....
-        $widget_mobile_label_styles->start_controls_section(
-            'menu-hover-bg-bottom',
-            [
-                'label' => __('Hover Background', 'plugin-name'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'lf_menu_animations' => 'bottom_underline',
-                ],
-            ]
-        );
-        $widget_mobile_label_styles->add_control(
-            'navbar_hover_bg_color_bottom',
-            [
-                'label' => esc_html__('Color', 'plugin-name'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#747474',
-                'condition' => [
-                    'lf_menu_animations' => 'bottom_underline',
-                ],
-            ]
-        );
-        $widget_mobile_label_styles->end_controls_section();
-        // Hover Bottom background color....
-
         $widget_mobile_label_styles->start_controls_section(
             'mobile_menu_label',
             [
-                'label' => __('Mobile Label Styles', 'plugin-name'),
+                'label' => __('Mobile Menu Settings', 'plugin-name'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -371,5 +363,22 @@ class LfControls
         );
 
         $widget_mobile_label_styles->end_controls_section();
+    }
+    public static function lfConditionalControls($widget_mobile_label_styles)
+    {
+        // Hover Top background color....
+        LfConditionalControls::topUnderlineBg($widget_mobile_label_styles);
+
+        // Hover Bottom background color....
+        LfConditionalControls::bottomUnderlineBg($widget_mobile_label_styles);
+        // Hover Bottom background color....
+
+        // Hover Double Line background color....
+        LfConditionalControls::hoverDoubleLine($widget_mobile_label_styles);
+
+        // Hover Frame Pulse background color....
+        LfConditionalControls::hoverFramePulse($widget_mobile_label_styles);
+
+        LfConditionalControls::default_hover($widget_mobile_label_styles);
     }
 }

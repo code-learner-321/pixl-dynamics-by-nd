@@ -2,7 +2,10 @@
 .large-screen-only {
   display: none;
 }
-
+.lf-pixl-nav-wrapper,
+.lf-pixl-nav-wrapper nav {
+    display: block;
+}
 /* mobile menu hamburger.. */
 .lf-hamburger {
   display: flex;
@@ -44,7 +47,7 @@
 
 .menu,
 .menu a {
-  color: #e2e2e2;
+  /* color: #e2e2e2; */
   text-decoration: none;
 }
 

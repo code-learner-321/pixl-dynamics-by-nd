@@ -94,16 +94,19 @@ class Elementor_Link_Flow_Widget extends Widget_Base
     }
     public function register_controls(): void
     {
-
         LfControls::menuSettings($this);
+
+        LfControls::menu_styles($this);
+        
+        LfControls::lf_margin($this);
 
         LfControls::typography($this);
 
-        LfControls::menu_styles($this);
-
         LfControls::menu_background($this);
 
-        LfControls::mobile_label_styles($this);
+        LfControls::lfConditionalControls($this);
+        
+        LfControls::lfmobile_menu_settings($this);
     }
 
     protected function render(): void
@@ -118,29 +121,29 @@ class Elementor_Link_Flow_Widget extends Widget_Base
             $lf_alignment = isset($settings['lf_alignment']) ? esc_attr($settings['lf_alignment']) : 'right';
             $lf_menu_animations = isset($settings['lf_menu_animations']) ? esc_attr($settings['lf_menu_animations']) : 'none';
 
-            $menu_link_text_color = isset($settings['menu_link_text_color']) ? $settings['menu_link_text_color'] : '#ffffff';
-            $menu_link_bg_color = isset($settings['menu_link_bg_color']) ? $settings['menu_link_bg_color'] : '#3a3a3aff';
-            $menu_link_arrow_double_line_color = isset($settings['menu_link_arrow_double_line_color']) ? $settings['menu_link_arrow_double_line_color'] : '#3a3a3aff';
-            $menu_link_arrow_color = isset($settings['menu_link_arrow_color']) ? $settings['menu_link_arrow_color'] : '#3a3a3aff';
-
-
             $this->display_menu_id = $settings['menu'];
             $show_arrow = $settings['submenu_arrow_toggle'];
 
-            $lf_select_animation = new Animations();
+            // $lf_select_animation = new Animations();
 
             if ($lf_menu_animations == "top_underline") {
-                $lf_select_animation->render_underline_top($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
+                // $lf_select_animation->render_underline_top($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
+                Animations::render_underline_top($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);                
             } elseif ($lf_menu_animations == "bottom_underline") {
-                $lf_select_animation->render_underline_below($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
+                // $lf_select_animation->render_underline_below($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
+                Animations::render_underline_below($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
             } elseif ($lf_menu_animations == "double_line") {
-                $lf_select_animation->render_double_line($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
+                // $lf_select_animation->render_double_line($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
+                Animations::render_double_line($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
             } elseif ($lf_menu_animations == "default") {
-                $lf_select_animation->render_default($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
+                // $lf_select_animation->render_default($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
+                Animations::render_default($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
             } elseif ($lf_menu_animations == "frame_pulse") {
-                $lf_select_animation->render_frame_pulse($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $menu_link_arrow_color, $unique_id);
+                // $lf_select_animation->render_frame_pulse($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
+                Animations::render_frame_pulse($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
             } else {
-                $lf_select_animation->render_default($this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
+                // $lf_select_animation->render_default($this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
+                Animations::render_default($this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
             }
             ?>
 </div>
