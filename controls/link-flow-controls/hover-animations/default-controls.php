@@ -224,8 +224,8 @@ class LfControls
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#505050',
                 'selectors' => [
-                    '{{WRAPPER}} nav.menu > ul > li > a' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} nav.menu > ul > li > label > a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} nav.menu > ul > li > .menu-item-wrapper > a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} nav.menu > ul > li > .menu-item-wrapper > label.submenu-toggle-label > a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -267,16 +267,16 @@ class LfControls
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-        $widget_mobile_label_styles->add_control('group_heading_arrow', [
-            'label' => esc_html__('Arrow Padding', 'plugin-name'),
+        $widget_mobile_label_styles->add_control('group_heading_link_padding', [
+            'label' => esc_html__('Padding Between Links', 'plugin-name'),
             'type' => \Elementor\Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
-        //WORK AREA.. 
+
         $widget_mobile_label_styles->add_control(
-            'lf_label_padding',
+            'lf_link_padding_mobile',
             [
-                'label' => __('Padding (All Devices)', 'plugin-domain'),
+                'label' => __('Padding', 'plugin-domain'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'default' => [
@@ -289,19 +289,33 @@ class LfControls
             ]
         );
 
-        $widget_mobile_label_styles->add_control('group_heading_arrow_bg_color', [
-            'label' => esc_html__('Arrow Label Background Color', 'plugin-name'),
+        $widget_mobile_label_styles->add_control('group_heading_submenu_link_padding', [
+            'label' => esc_html__('Submenu Padding', 'plugin-name'),
             'type' => \Elementor\Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
+
         $widget_mobile_label_styles->add_control(
-            'menu_link_arrow_label_bg_color',
+            'lfsubmenu_link_padding',
             [
-                'label' => esc_html__('Arrow Label Background', 'textdomain'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => 'rgba(255, 255, 255, 0.3)',
+                'label' => __('Padding', 'plugin-domain'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'default' => [
+                    'top' => '8',
+                    'right' => '8',
+                    'bottom' => '8',
+                    'left' => '8',
+                    'unit' => 'px',
+                ],
             ]
         );
+        $widget_mobile_label_styles->add_control('group_heading_arrow', [
+            'label' => esc_html__('Arrow Padding', 'plugin-name'),
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]);
+        //WORK AREA.. 
 
         $widget_mobile_label_styles->add_control('group_heading_arrow_size', [
             'label' => esc_html__('Arrow Size', 'plugin-name'),
@@ -327,6 +341,11 @@ class LfControls
                 ],
             ]
         );
+        $widget_mobile_label_styles->add_control('group_heading_hamburger_style', [
+            'label' => esc_html__('Hamburger Icon', 'plugin-name'),
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]); 
         $widget_mobile_label_styles->add_control(
             'lf_hamburger_alignment',
             [
@@ -340,45 +359,39 @@ class LfControls
                 ],
             ]
         );
-        $widget_mobile_label_styles->add_control('group_heading_link_padding', [
-            'label' => esc_html__('Padding Between Links', 'plugin-name'),
-            'type' => \Elementor\Controls_Manager::HEADING,
-            'separator' => 'before',
-        ]);
-
+       
         $widget_mobile_label_styles->add_control(
-            'lf_link_padding_mobile',
-            [
-                'label' => __('Padding', 'plugin-domain'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'default' => [
-                    'top' => '8',
-                    'right' => '8',
-                    'bottom' => '8',
-                    'left' => '8',
-                    'unit' => 'px',
-                ],
-            ]
-        );
+	'lf_hamburger_margin',
+	[
+		'label' => esc_html__( 'Hamburger Icon Margin', 'textdomain' ),
+		'type' => \Elementor\Controls_Manager::DIMENSIONS,
+		'size_units' => [ 'px', '%', 'em', 'rem' ],
+		'default' => [
+			'top' => '0',
+			'right' => '0',
+			'bottom' => '0',
+			'left' => '0',
+			'isLinked' => false,
+		],
+		'selectors' => [
+			'{{WRAPPER}} .lf-hamburger' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		],
+	]
+);
 
         $widget_mobile_label_styles->end_controls_section();
     }
     public static function lfConditionalControls($widget_mobile_label_styles)
     {
-        // Hover Top background color....
         LfConditionalControls::topUnderlineBg($widget_mobile_label_styles);
 
-        // Hover Bottom background color....
         LfConditionalControls::bottomUnderlineBg($widget_mobile_label_styles);
-        // Hover Bottom background color....
 
-        // Hover Double Line background color....
         LfConditionalControls::hoverDoubleLine($widget_mobile_label_styles);
 
-        // Hover Frame Pulse background color....
         LfConditionalControls::hoverFramePulse($widget_mobile_label_styles);
-
+            
         LfConditionalControls::default_hover($widget_mobile_label_styles);
+
     }
 }

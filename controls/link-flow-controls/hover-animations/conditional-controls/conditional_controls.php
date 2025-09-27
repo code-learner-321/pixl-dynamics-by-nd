@@ -153,28 +153,45 @@ namespace Lf\LinkFlowControls\HoverAnimations\ConditionalControls;
             ]
         );
         $widget_default_hover_style->add_control(
-            'link_hover_color_text',
+            'lf_link_hover',
             [
-                'label' => esc_html__('Link Hover Color', 'plugin-name'),
+                'label' => esc_html__('Enable Hover', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'plugin-name'),
+                'label_off' => esc_html__('Hide', 'plugin-name'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+        $widget_default_hover_style->add_control('group_heading_hoverbgcolor', [
+            'label' => esc_html__('Background Hover Color', 'plugin-name'),
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+            'condition' => [
+                'lf_link_hover' => 'yes',
+                'lf_menu_animations' => 'default',
+            ],
+        ]);
+        $widget_default_hover_style->add_control(
+            'link_hover_bg_color',
+            [
+                'label' => esc_html__('Background Hover Color', 'plugin-name'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#adb5bd',
+                'default' => '#DDE1E6',
                 'condition' => [
+                    'lf_link_hover' => 'yes',
                     'lf_menu_animations' => 'default',
                 ],
             ]
         );
-        $widget_default_hover_style->add_control('group_heading_hovertextcolor', [
-            'label' => esc_html__('Submenu Text Hover Color', 'plugin-name'),
-            'type' => \Elementor\Controls_Manager::HEADING,
-            'separator' => 'before',
-        ]);
         $widget_default_hover_style->add_control(
-            'link_submenu_hover_color_text',
+            'link_hover_bg_text',
             [
-                'label' => esc_html__('Link Submenu Hover Text Color', 'plugin-name'),
+                'label' => esc_html__('Text On Hover', 'plugin-name'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#adb5bd',
+                'default' => '#484848ff',
                 'condition' => [
+                    'lf_link_hover' => 'yes',
                     'lf_menu_animations' => 'default',
                 ],
             ]
