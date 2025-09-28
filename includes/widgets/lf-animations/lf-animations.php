@@ -68,6 +68,26 @@ class Animations
                     gap: 0px;
                 }
 
+                /* Wrapper fills full width */
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .menu-item-wrapper'; ?> {
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    z-index: 1;
+                }
+
+                /* Submenu toggle label fills full width */
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .submenu-toggle-label'; ?> {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    position: relative;
+                    z-index: 2;
+                }
+
                 nav.menu.<?php echo esc_attr($unique_class_css) . 'ul li > .menu-item-wrapper > a'; ?> {
                     text-transform: capitalize;
                 }
@@ -88,6 +108,10 @@ class Animations
 
                 nav.menu.<?php echo esc_attr($unique_class_css) . '>ul>li'; ?> {
                     position: relative;
+                    margin: 0;
+                    padding: 0;
+                    line-height: 1;
+                    font-size: 0;
                 }
 
                 nav.menu.<?php echo esc_attr($unique_class_css) . '>ul>li>a:hover::after'; ?> {
@@ -125,11 +149,11 @@ class Animations
                     transition: width 0.3s ease;
                 }
 
-                nav.menu.<?php echo esc_attr($unique_class_css).'>ul>li:hover::before'; ?> {
+                nav.menu.<?php echo esc_attr($unique_class_css) . '>ul>li:hover::before'; ?> {
                     width: 100%;
                 }
 
-                nav.menu.<?php echo esc_attr($unique_class_css) . ' a.menu-link'; ?> {
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .menu-link'; ?> {
                     font-size: 16px;
                     text-transform: capitalize;
                     font-weight: normal !important;
@@ -190,13 +214,15 @@ class Animations
                 /* Top-level link padding */
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li > .menu-item-wrapper'; ?> {
                     padding: <?php echo esc_attr($link_padding_css); ?>;
-                    line-height: normal;
+                    /* line-height: normal; */
+                    line-height: 1;
                 }
 
                 /* Submenu link padding */
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li ul li > .menu-item-wrapper'; ?> {
                     padding: <?php echo esc_attr($submenu_link_padding_css); ?>;
-                    line-height: normal;
+                    /* line-height: normal; */
+                    line-height: 1;
                 }
 
                 /* Prevent clipping globally */
@@ -220,7 +246,7 @@ class Animations
 
             /* Remove padding for all submenu depths on large screen */
             nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li ul li'; ?> {
-                line-height: 1.2;
+                line-height: 1;
             }
 
             /* TABLET AND MOBILE narrow styles */
@@ -594,6 +620,26 @@ class Animations
                     gap: 0px;
                 }
 
+                /* Wrapper fills full width */
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .menu-item-wrapper'; ?> {
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    z-index: 1;
+                }
+
+                /* Submenu toggle label fills full width */
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .submenu-toggle-label'; ?> {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    position: relative;
+                    z-index: 2;
+                }
+
                 nav.menu.<?php echo esc_attr($unique_class_css) . 'ul li > .menu-item-wrapper > a'; ?> {
                     text-transform: capitalize;
                 }
@@ -614,6 +660,10 @@ class Animations
 
                 nav.menu.<?php echo esc_attr($unique_class_css) . '>ul>li'; ?> {
                     position: relative;
+                    margin: 0;
+                    padding: 0;
+                    line-height: 1;
+                    font-size: 0;
                 }
 
                 nav.menu.<?php echo esc_attr($unique_class_css) . '>ul>li>a:hover::after'; ?> {
@@ -655,7 +705,7 @@ class Animations
                     width: 100%;
                 }
 
-                nav.menu.<?php echo esc_attr($unique_class_css) . ' a.menu-link'; ?> {
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .menu-link'; ?> {
                     font-size: 16px;
                     text-transform: capitalize;
                     font-weight: normal !important;
@@ -665,11 +715,8 @@ class Animations
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li ul'; ?> {
                     box-shadow:
                         0 1px 5px rgba(0, 0, 0, 0.15),
-                        /* soft vertical shadow */
                         -1px 0 5px rgba(128, 128, 128, 0.08),
-                        /* subtle left grey glow */
                         1px 0 5px rgba(128, 128, 128, 0.08);
-                    /* subtle right grey glow */
                 }
 
                 /* to open menu on hover... */
@@ -719,7 +766,7 @@ class Animations
                 /* Top-level link padding */
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li > .menu-item-wrapper'; ?> {
                     padding: <?php echo esc_attr($link_padding_css); ?>;
-                    line-height: normal;
+                    line-height: 1;
                 }
 
                 /* Prevent clipping globally */
@@ -743,7 +790,7 @@ class Animations
 
             /* Remove padding for all submenu depths on large screen */
             nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li ul li'; ?> {
-                line-height: 1.2;
+                line-height: 1;
             }
 
             /* TABLET AND MOBILE narrow styles */
@@ -770,7 +817,7 @@ class Animations
                     box-sizing: border-box;
                     position: relative;
                     z-index: 2;
-                    line-height: 1.6;
+                    line-height: 1;
                 }
 
                 /* Remove padding for all submenu depths on mobile */
@@ -780,7 +827,7 @@ class Animations
 
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li'; ?>,
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li>.submenu-toggle-label'; ?> {
-                    line-height: 1.6;
+                    line-height: 1;
                 }
 
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li'; ?> {
@@ -1097,15 +1144,35 @@ class Animations
     ?>
         <style>
             @media screen and (min-width: 1025px) {
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul {
+                nav.menu.<?php echo esc_attr($unique_class_css) . '>ul'; ?> {
                     list-style: none;
                     position: relative;
                     display: flex;
                     gap: 0px;
                 }
 
+                /* Wrapper fills full width */
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .menu-item-wrapper'; ?> {
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    z-index: 1;
+                }
+
+                /* Submenu toggle label fills full width */
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .submenu-toggle-label'; ?> {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    position: relative;
+                    z-index: 2;
+                }
+
                 /* Double Line Hover Animations... */
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li::before {
+                nav.menu.<?php echo esc_attr($unique_class_css) . '>ul>li::before'; ?> {
                     content: '';
                     position: absolute;
                     width: 100%;
@@ -1121,12 +1188,18 @@ class Animations
                     pointer-events: none;
                 }
 
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li:hover::before {
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .menu-link'; ?> {
+                    font-size: 16px;
+                    text-transform: capitalize;
+                    font-weight: normal !important;
+                }
+
+                nav.menu.<?php echo esc_attr($unique_class_css) . '>ul>li:hover::before'; ?> {
                     transform: scaleY(1.1);
                     opacity: 1;
                 }
 
-                nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li::after {
+                nav.menu.<?php echo esc_attr($unique_class_css) . '>ul>li::after'; ?> {
                     content: '';
                     position: absolute;
                     width: 100%;
@@ -1162,6 +1235,10 @@ class Animations
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li'; ?> {
                     position: relative;
                     z-index: 1;
+                    margin: 0;
+                    padding: 0;
+                    line-height: 1;
+                    font-size: 0;
                 }
 
                 nav.menu.<?php echo esc_attr($unique_class_css); ?>>ul>li>.menu-item-wrapper>label.submenu-toggle-label>a {
@@ -1208,11 +1285,8 @@ class Animations
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li ul'; ?> {
                     box-shadow:
                         0 1px 5px rgba(0, 0, 0, 0.15),
-                        /* soft vertical shadow */
                         -1px 0 5px rgba(128, 128, 128, 0.08),
-                        /* subtle left grey glow */
                         1px 0 5px rgba(128, 128, 128, 0.08);
-                    /* subtle right grey glow */
                 }
 
                 /* to open menu on hover... */
@@ -1262,13 +1336,13 @@ class Animations
                 /* Top-level link padding */
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li > .menu-item-wrapper'; ?> {
                     padding: <?php echo esc_attr($link_padding_css); ?>;
-                    line-height: normal;
+                    line-height: 1;
                 }
 
                 /* Submenu link padding */
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li ul li > .menu-item-wrapper'; ?> {
                     padding: <?php echo esc_attr($submenu_link_padding_css); ?>;
-                    line-height: normal;
+                    line-height: 1;
                 }
 
                 /* Prevent clipping globally */
@@ -1292,7 +1366,7 @@ class Animations
 
             /* Remove padding for all submenu depths on large screen */
             nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li ul li'; ?> {
-                line-height: 1.2;
+                line-height: 1;
             }
 
             /* TABLET AND MOBILE narrow styles */
@@ -1319,7 +1393,7 @@ class Animations
                     box-sizing: border-box;
                     position: relative;
                     z-index: 2;
-                    line-height: 1.6;
+                    line-height: 1;
                 }
 
                 /* Remove padding for all submenu depths on mobile */
@@ -1329,7 +1403,7 @@ class Animations
 
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li'; ?>,
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li>.submenu-toggle-label'; ?> {
-                    line-height: 1.6;
+                    line-height: 1;
                 }
 
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li'; ?> {
@@ -1652,6 +1726,34 @@ class Animations
                     gap: 0px;
                 }
 
+                nav.menu.<?php echo esc_attr($unique_class_css) . '>ul>li'; ?> {
+                    position: relative;
+                    margin: 0;
+                    padding: 0;
+                    line-height: 1;
+                    font-size: 0;
+                }
+
+                /* Wrapper fills full width */
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .menu-item-wrapper'; ?> {
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    z-index: 1;
+                }
+
+                /* Submenu toggle label fills full width */
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .submenu-toggle-label'; ?> {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    position: relative;
+                    z-index: 2;
+                }
+
                 /* frame pulse animation starts here... */
                 nav.menu.<?php echo esc_attr($unique_class_css) . '>ul>li::before'; ?> {
                     content: '';
@@ -1664,6 +1766,12 @@ class Animations
                     border-width: 0 0 3px 3px;
                     transition: .5s;
                     opacity: 0;
+                }
+
+                nav.menu.<?php echo esc_attr($unique_class_css) . ' .menu-link'; ?> {
+                    font-size: 16px;
+                    text-transform: capitalize;
+                    font-weight: normal !important;
                 }
 
                 nav.menu.<?php echo esc_attr($unique_class_css) . '>ul>li:hover'; ?> {
@@ -1749,11 +1857,8 @@ class Animations
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li ul'; ?> {
                     box-shadow:
                         0 1px 5px rgba(0, 0, 0, 0.15),
-                        /* soft vertical shadow */
                         -1px 0 5px rgba(128, 128, 128, 0.08),
-                        /* subtle left grey glow */
                         1px 0 5px rgba(128, 128, 128, 0.08);
-                    /* subtle right grey glow */
                 }
 
                 /* to open menu on hover... */
@@ -1803,13 +1908,13 @@ class Animations
                 /* Top-level link padding */
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li > .menu-item-wrapper'; ?> {
                     padding: <?php echo esc_attr($link_padding_css); ?>;
-                    line-height: normal;
+                    line-height: 1;
                 }
 
                 /* Submenu link padding */
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li ul li > .menu-item-wrapper'; ?> {
                     padding: <?php echo esc_attr($submenu_link_padding_css); ?>;
-                    line-height: normal;
+                    line-height: 1;
                 }
 
                 /* Prevent clipping globally */
@@ -1833,7 +1938,7 @@ class Animations
 
             /* Remove padding for all submenu depths on large screen */
             nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li ul li'; ?> {
-                line-height: 1.2;
+                line-height: 1;
             }
 
             /* TABLET AND MOBILE narrow styles */
@@ -1860,7 +1965,7 @@ class Animations
                     box-sizing: border-box;
                     position: relative;
                     z-index: 2;
-                    line-height: 1.6;
+                    line-height: ;
                 }
 
                 /* Remove padding for all submenu depths on mobile */
@@ -1870,7 +1975,7 @@ class Animations
 
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li'; ?>,
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li>.submenu-toggle-label'; ?> {
-                    line-height: 1.6;
+                    line-height: 1;
                 }
 
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li'; ?> {
@@ -1929,7 +2034,7 @@ class Animations
                     color: #333;
                 }
 
-                .menu.<?php echo esc_attr($unique_class_css) . '.submenu-toggle-label'; ?> {
+                .menu.<?php echo esc_attr($unique_class_css) . ' .submenu-toggle-label'; ?> {
                     cursor: pointer;
                     display: inline-flex;
                     align-items: center;
@@ -2213,6 +2318,13 @@ class Animations
                     position: relative;
                 }
 
+                nav.menu.<?php echo esc_attr($unique_class_css); ?>ul li {
+                    margin: 0;
+                    padding: 0;
+                    line-height: 1;
+                    font-size: 0;
+                }
+
                 /* Wrapper fills full width */
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' .menu-item-wrapper'; ?> {
                     position: relative;
@@ -2223,11 +2335,6 @@ class Animations
 
                 /* Base link styling */
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' .menu-link'; ?> {
-                    display: inline-block;
-                    color: inherit;
-                    text-decoration: none;
-                    position: relative;
-                    z-index: 2;
                     font-size: 16px;
                     text-transform: capitalize;
                     font-weight: normal !important;
@@ -2301,13 +2408,13 @@ class Animations
                 /* Top-level link padding */
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li > .menu-item-wrapper'; ?> {
                     padding: <?php echo esc_attr($link_padding_css); ?>;
-                    line-height: normal;
+                    line-height: 1;
                 }
 
                 /* Submenu link padding */
                 nav.menu.<?php echo esc_attr($unique_class_css) . ' ul li ul li > .menu-item-wrapper'; ?> {
                     padding: <?php echo esc_attr($submenu_link_padding_css); ?>;
-                    line-height: normal;
+                    line-height: 1;
                 }
 
                 <?php
