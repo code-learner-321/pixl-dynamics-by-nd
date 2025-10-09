@@ -16,28 +16,23 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-// require_once plugin_dir_path(__FILE__) . 'includes/nav-walker/class-custom-nav-walker.php';
-// add_action('init', function() {
-//     require_once plugin_dir_path(__FILE__) . 'includes/nav-walker/class-custom-nav-walker.php';
-// });
-
 /* Add Elementor Widget Categorie called Pixl Dynamics By ND*/
-function add_elementor_widget_categories( $elements_manager ) {
-
-	$elements_manager->add_category(
-		'pixel-dynamics',
-		[
-			'title' => esc_html__( 'Pixl Dynamics By ND', 'pixl-dynamics-by-nd' ),
-			'icon' => 'fa fa-plug',
-		]
-	);
-
+function add_elementor_widget_categories($elements_manager)
+{
+    $elements_manager->add_category(
+        'pixel-dynamics',
+        [
+            'title' => esc_html__('Pixl Dynamics By ND', 'pixl-dynamics-by-nd'),
+            'icon' => 'fa fa-plug',
+        ]
+    );
 }
-add_action( 'elementor/elements/categories_registered', 'add_elementor_widget_categories' );
+
+add_action('elementor/elements/categories_registered', 'add_elementor_widget_categories');
 
 // Ensure Elementor is active
 if (!did_action('elementor/loaded')) {
-    add_action('admin_notices', function() {
+    add_action('admin_notices', function () {
         if (!is_plugin_active('elementor/elementor.php')) {
             $message = sprintf(
                 esc_html__('Portfolio Card Flip requires %1$s to be installed and activated.', 'pixl-dynamics-by-nd'),
@@ -57,13 +52,20 @@ function elementor_widget_pixl_dynamics_dependencies()
         return;
     }
     wp_enqueue_script(
+        'menu-active-handler',
+        plugin_dir_url(__FILE__) . 'assets/js/menu-active-handler.js',
+        array(),
+        null,
+        true
+    );
+    wp_enqueue_script(
         'widget-flip-card-js',
         plugins_url('assets/js/flip-card.js', __FILE__),
         ['jquery', 'elementor-frontend'],
         null,
         true
     );
-    
+
     wp_enqueue_script(
         'link-flow-script-js',
         plugins_url('assets/js/link-flow-script.js', __FILE__),
@@ -71,7 +73,7 @@ function elementor_widget_pixl_dynamics_dependencies()
         null,
         true
     );
-    
+
     // js for pagenation
     wp_enqueue_script(
         'widget-card-pagenation-js',
@@ -106,8 +108,9 @@ add_action('wp_enqueue_scripts', 'elementor_widget_pixl_dynamics_dependencies');
 add_action('elementor/frontend/after_enqueue_styles', 'elementor_widget_pixl_dynamics_dependencies');
 
 // Update the AJAX handler to return the complete HTML structure
-function handle_load_more_cards() {
-    
+function handle_load_more_cards()
+{
+
     // Verify nonce
     if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'portfolio_card_pagination_nonce')) {
         error_log('Nonce verification failed');
@@ -119,7 +122,7 @@ function handle_load_more_cards() {
     $page = isset($_POST['page']) ? max(1, intval($_POST['page'])) : 1;
     $posts_per_page = isset($_POST['posts_per_page']) ? intval($_POST['posts_per_page']) : 2;
     $order_type = isset($_POST['order_type']) ? sanitize_text_field($_POST['order_type']) : 'DESC';
-    
+
     $args = [
         'post_type'      => 'portfolio_card',
         'posts_per_page' => $posts_per_page,
@@ -177,7 +180,8 @@ add_action('wp_ajax_load_more_cards', 'handle_load_more_cards');
 add_action('wp_ajax_nopriv_load_more_cards', 'handle_load_more_cards');
 
 // Register Card Flip post type
-function register_portfolio_card_post_type() {
+function register_portfolio_card_post_type()
+{
     $labels = [
         'name'               => _x('Card Flip', 'post type general name', 'pixl-dynamics-by-nd'),
         'singular_name'      => _x('Card Flip', 'post type singular name', 'pixl-dynamics-by-nd'),
@@ -255,9 +259,10 @@ function create_card_slider_taxonomy()
 add_action('init', 'create_card_slider_taxonomy', 0);
 // SLIDER TAXANOMY ENDS...
 
- /*SIngleton code starts..*/
- function elementor_card_addon() {
-    require_once( __DIR__ . '/includes/plugin.php' );
+/*SIngleton code starts..*/
+function elementor_card_addon()
+{
+    require_once(__DIR__ . '/includes/plugin.php');
     \Elementor_Addon_Pixl_Dynamics\Plugin::instance();
 }
-add_action( 'plugins_loaded', 'elementor_card_addon' );
+add_action('plugins_loaded', 'elementor_card_addon');

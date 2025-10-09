@@ -311,15 +311,6 @@
     opacity: 1;
 }
 
-/* Ensure proper perspective */
-/* .elementor-gallery-flip-card .card {
-    perspective: 1500px !important;
-    -webkit-perspective: 1500px !important;
-    -moz-perspective: 1500px !important;
-    -ms-perspective: 1500px !important;
-    -o-perspective: 1500px !important;
-} */
-
 /* Ensure proper z-index stacking */
 .elementor-gallery-flip-card .card-front {
     z-index: 2 !important;

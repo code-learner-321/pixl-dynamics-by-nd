@@ -17,7 +17,7 @@ use Elementor_Addon_Pixl_Dynamics\LfControls;
 
 
 if (! defined('ABSPATH')) {
-    exit; // Exit if accessed directly.
+    exit; 
 }
 
 use Elementor\Widget_Base;
@@ -72,8 +72,9 @@ class Elementor_Link_Flow_Widget extends Widget_Base
 
     protected function is_dynamic_content(): bool
     {
-        return false;
+        return true;
     }
+
     public function get_menus()
     {
         $menus = wp_get_nav_menus();
@@ -86,12 +87,14 @@ class Elementor_Link_Flow_Widget extends Widget_Base
 
         return $menu_list;
     }
+
     public function get_default_slug()
     {
         $menu = $this->get_menus();
 
         return key($menu);
     }
+
     public function register_controls(): void
     {
         LfControls::menuSettings($this);
@@ -124,25 +127,18 @@ class Elementor_Link_Flow_Widget extends Widget_Base
             $this->display_menu_id = $settings['menu'];
             $show_arrow = $settings['submenu_arrow_toggle'];
 
-            // $lf_select_animation = new Animations();
 
             if ($lf_menu_animations == "top_underline") {
-                // $lf_select_animation->render_underline_top($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
                 Animations::render_underline_top($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);                
             } elseif ($lf_menu_animations == "bottom_underline") {
-                // $lf_select_animation->render_underline_below($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
                 Animations::render_underline_below($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
             } elseif ($lf_menu_animations == "double_line") {
-                // $lf_select_animation->render_double_line($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
                 Animations::render_double_line($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
             } elseif ($lf_menu_animations == "default") {
-                // $lf_select_animation->render_default($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
                 Animations::render_default($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
             } elseif ($lf_menu_animations == "frame_pulse") {
-                // $lf_select_animation->render_frame_pulse($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
                 Animations::render_frame_pulse($settings, $this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
             } else {
-                // $lf_select_animation->render_default($this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
                 Animations::render_default($this->display_menu_id, $lf_alignment, $show_arrow, $unique_id);
             }
             ?>

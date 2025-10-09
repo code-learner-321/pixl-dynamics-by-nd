@@ -3,7 +3,7 @@
 namespace Elementor_Addon_Pixl_Dynamics;
 
 if (! defined('ABSPATH')) {
-    exit; // Exit if accessed directly.
+    exit; 
 }
 
 use Elementor\Widget_Base;
@@ -58,7 +58,7 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
 
     protected function is_dynamic_content(): bool
     {
-        return false;
+        return true;
     }
 
     protected function register_controls(): void
@@ -346,7 +346,6 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
             ]
         );
 
-        // Add a divider for better organization
         $this->add_control(
             'card_back_style_divider',
             [
@@ -354,7 +353,6 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
             ]
         );
 
-        // Add a note about the background color
         $this->add_control(
             'card_back_style_note',
             [
@@ -365,7 +363,6 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         );
         $this->end_controls_section();
 
-        // Card Back Styles starts....
         $this->start_controls_section(
             'section_card_back',
             [
@@ -457,7 +454,6 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
         );
 
         $this->end_controls_section();
-        // Card Back Styles ends here...
 
         // Add Pagination Style Section
         $this->start_controls_section(
@@ -557,11 +553,11 @@ class Elementor_Gallery_Card_Widget extends Widget_Base
     protected function render(): void
     {
         $settings = $this->get_settings_for_display();
-        $selected_effect = esc_attr($settings['hover_effect']); // Ensure safe output
+        $selected_effect = esc_attr($settings['hover_effect']); 
         $posts_per_page = isset($settings['posts_per_page']) ? intval($settings['posts_per_page']) : 2;
 
         /*ORDER TYPE*/
-        $order_type = isset($settings['order_type']) ? esc_attr($settings['order_type']) : 'DESC'; // Get selected order type
+        $order_type = isset($settings['order_type']) ? esc_attr($settings['order_type']) : 'DESC'; 
 
         // Get current page
         $paged = max(1, get_query_var('paged'));

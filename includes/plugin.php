@@ -1,10 +1,9 @@
 <?php
 
 namespace Elementor_Addon_Pixl_Dynamics;
-// namespace Elementor_Addon_Link_Flow;
 
 if (! defined('ABSPATH')) {
-	exit; // Exit if accessed directly.
+	exit; 
 }
 
 final class Plugin
@@ -38,19 +37,16 @@ final class Plugin
 	public function is_compatible()
 	{
 
-		// Check if Elementor installed and activated
 		if (! did_action('elementor/loaded')) {
 			add_action('admin_notices', [$this, 'admin_notice_missing_main_plugin']);
 			return false;
 		}
 
-		// Check for required Elementor version
 		if (! version_compare(ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=')) {
 			add_action('admin_notices', [$this, 'admin_notice_minimum_elementor_version']);
 			return false;
 		}
 
-		// Check for required PHP version
 		if (version_compare(PHP_VERSION, self::MINIMUM_PHP_VERSION, '<')) {
 			add_action('admin_notices', [$this, 'admin_notice_minimum_php_version']);
 			return false;
@@ -65,7 +61,6 @@ final class Plugin
 		if (isset($_GET['activate'])) unset($_GET['activate']);
 
 		$message = sprintf(
-			/* translators: 1: Plugin name 2: Elementor */
 			esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'elementor-test-addon'),
 			'<strong>' . esc_html__('Elementor Test Addon', 'elementor-test-addon') . '</strong>',
 			'<strong>' . esc_html__('Elementor', 'elementor-test-addon') . '</strong>'
@@ -81,7 +76,6 @@ final class Plugin
 		if (isset($_GET['activate'])) unset($_GET['activate']);
 
 		$message = sprintf(
-			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
 			esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'elementor-test-addon'),
 			'<strong>' . esc_html__('Elementor Test Addon', 'elementor-test-addon') . '</strong>',
 			'<strong>' . esc_html__('Elementor', 'elementor-test-addon') . '</strong>',
@@ -109,7 +103,6 @@ final class Plugin
 
 	public function init(): void
 	{
-
 		add_action('elementor/widgets/register', [$this, 'register_widgets']);
 	}
 

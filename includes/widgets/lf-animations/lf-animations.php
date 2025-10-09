@@ -2495,6 +2495,9 @@ class Animations
                     padding-left: 20px !important;
                     padding-right: 20px !important;
                 }
+
+                /* active color ends.. */
+
             }
 
             /* TABLET AND MOBILE narrow styles */

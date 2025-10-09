@@ -2,7 +2,6 @@
 
 namespace Elementor_Addon_Pixl_Dynamics;
 
-// animation controls
 require_once plugin_dir_path(__FILE__) . 'conditional-controls/conditional_controls.php';
 
 use Lf\LinkFlowControls\HoverAnimations\ConditionalControls\LfConditionalControls;
@@ -59,6 +58,7 @@ class LfControls
         );
         $widget->end_controls_section();
     }
+
     public static function lf_margin($widget_margin)
     {
         $widget_margin->start_controls_section(
@@ -91,9 +91,9 @@ class LfControls
 
         $widget_margin->end_controls_section();
     }
+
     public static function typography($widget_typography)
     {
-        // typography for menu links...
         $widget_typography->start_controls_section(
             'section_style_typography',
             [
@@ -119,13 +119,10 @@ class LfControls
             ]
         );
         $widget_typography->end_controls_section();
-        // typography for menu links...
 
     }
     public static function menu_styles($widget_menu_styles)
     {
-
-        /*Style Section...*/
         $widget_menu_styles->start_controls_section(
             'section_style',
             [
@@ -133,17 +130,28 @@ class LfControls
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+
         $widget_menu_styles->add_control(
             'lf_alignment',
             [
-                'label'   => __('Menu Alignment', 'plugin-domain'),
-                'type'    => \Elementor\Controls_Manager::SELECT,
+                'label' => esc_html__('Alignment', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'  => __('Left', 'plugin-domain'),
-                    'right' => __('Right', 'plugin-domain'),
-                    'center' => __('Center', 'plugin-domain'),
+                    'left' => [
+                        'title' => esc_html__('Left', 'textdomain'),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'textdomain'),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__('Right', 'textdomain'),
+                        'icon' => 'eicon-text-align-right',
+                    ],
                 ],
                 'default' => 'right',
+                'toggle' => true,
             ]
         );
         // Padding control 
@@ -191,6 +199,7 @@ class LfControls
         );
         $widget_menu_styles->end_controls_section();
     }
+
     public static function menu_background($widget_menu_background)
     {
         $widget_menu_background->start_controls_section(
@@ -200,15 +209,20 @@ class LfControls
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-        $widget_menu_background->add_control('group_heading_menu_bg', [
-            'label' => esc_html__('Menu Background Color', 'plugin-name'),
-            'type' => \Elementor\Controls_Manager::HEADING,
-            'separator' => 'before',
-        ]);
+
+        $widget_menu_background->start_controls_tabs('style_tabs');
+
+        $widget_menu_background->start_controls_tab(
+            'style_normal_tab',
+            [
+                'label' => esc_html__('Main Menu', 'textdomain'),
+            ]
+        );
+
         $widget_menu_background->add_control(
             'navbar_bg_color',
             [
-                'label' => esc_html__('Color', 'plugin-name'),
+                'label' => esc_html__('Background Color', 'plugin-name'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f8f9fa',
                 'selectors' => [
@@ -216,7 +230,6 @@ class LfControls
                 ],
             ]
         );
-        // nav bar text color
         $widget_menu_background->add_control(
             'nav_txt_color',
             [
@@ -229,15 +242,37 @@ class LfControls
                 ],
             ]
         );
+
+        $widget_menu_background->end_controls_tab();
+        $widget_menu_background->start_controls_tab(
+            'style_active_tab',
+            [
+                'label' => esc_html__('Link Active', 'textdomain'),
+            ]
+        );
+
+        $widget_menu_background->add_control(
+            'menu_active_color',
+            [
+                'label' => __('Active Text Color', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .menu-link.active' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+        $widget_menu_background->end_controls_tab();
+        $widget_menu_background->end_controls_tabs();
+
         $widget_menu_background->add_control('group_heading_submenu_bg', [
-            'label' => esc_html__('Sub Menu Background Color', 'plugin-name'),
+            'label' => esc_html__('Sub Menu Styles', 'plugin-name'),
             'type' => \Elementor\Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
         $widget_menu_background->add_control(
             'navbar_sub_menu_bg_color',
             [
-                'label' => esc_html__('Color', 'plugin-name'),
+                'label' => esc_html__('Background Color', 'plugin-name'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#e9ecef',
                 'selectors' => [
@@ -258,6 +293,7 @@ class LfControls
         );
         $widget_menu_background->end_controls_section();
     }
+
     public static function lfmobile_menu_settings($widget_mobile_label_styles)
     {
         $widget_mobile_label_styles->start_controls_section(
@@ -315,7 +351,6 @@ class LfControls
             'type' => \Elementor\Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
-        //WORK AREA.. 
 
         $widget_mobile_label_styles->add_control('group_heading_arrow_size', [
             'label' => esc_html__('Arrow Size', 'plugin-name'),
@@ -345,7 +380,7 @@ class LfControls
             'label' => esc_html__('Hamburger Icon', 'plugin-name'),
             'type' => \Elementor\Controls_Manager::HEADING,
             'separator' => 'before',
-        ]); 
+        ]);
         $widget_mobile_label_styles->add_control(
             'lf_hamburger_alignment',
             [
@@ -359,28 +394,29 @@ class LfControls
                 ],
             ]
         );
-       
+
         $widget_mobile_label_styles->add_control(
-	'lf_hamburger_margin',
-	[
-		'label' => esc_html__( 'Hamburger Icon Margin', 'textdomain' ),
-		'type' => \Elementor\Controls_Manager::DIMENSIONS,
-		'size_units' => [ 'px', '%', 'em', 'rem' ],
-		'default' => [
-			'top' => '0',
-			'right' => '0',
-			'bottom' => '0',
-			'left' => '0',
-			'isLinked' => false,
-		],
-		'selectors' => [
-			'{{WRAPPER}} .lf-hamburger' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-		],
-	]
-);
+            'lf_hamburger_margin',
+            [
+                'label' => esc_html__('Hamburger Icon Margin', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'default' => [
+                    'top' => '0',
+                    'right' => '0',
+                    'bottom' => '0',
+                    'left' => '0',
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .lf-hamburger' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
 
         $widget_mobile_label_styles->end_controls_section();
     }
+
     public static function lfConditionalControls($widget_mobile_label_styles)
     {
         LfConditionalControls::topUnderlineBg($widget_mobile_label_styles);
@@ -390,8 +426,7 @@ class LfControls
         LfConditionalControls::hoverDoubleLine($widget_mobile_label_styles);
 
         LfConditionalControls::hoverFramePulse($widget_mobile_label_styles);
-            
-        LfConditionalControls::default_hover($widget_mobile_label_styles);
 
+        LfConditionalControls::default_hover($widget_mobile_label_styles);
     }
 }
