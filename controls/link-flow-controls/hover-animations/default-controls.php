@@ -119,7 +119,6 @@ class LfControls
             ]
         );
         $widget_typography->end_controls_section();
-
     }
     public static function menu_styles($widget_menu_styles)
     {
@@ -210,8 +209,12 @@ class LfControls
             ]
         );
 
+        $widget_menu_background->add_control('group_heading_main_menu_bg', [
+            'label' => esc_html__('Main Menu Styles', 'plugin-name'),
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'after',
+        ]);
         $widget_menu_background->start_controls_tabs('style_tabs');
-
         $widget_menu_background->start_controls_tab(
             'style_normal_tab',
             [
@@ -267,8 +270,18 @@ class LfControls
         $widget_menu_background->add_control('group_heading_submenu_bg', [
             'label' => esc_html__('Sub Menu Styles', 'plugin-name'),
             'type' => \Elementor\Controls_Manager::HEADING,
-            'separator' => 'before',
+            'separator' => 'after',
         ]);
+        $widget_menu_background->start_controls_tabs(
+            'style_default_submenu_tabs'
+        );
+
+        $widget_menu_background->start_controls_tab(
+            'style_submenu_background_tab',
+            [
+                'label' => esc_html__('Background', 'textdomain'),
+            ]
+        );
         $widget_menu_background->add_control(
             'navbar_sub_menu_bg_color',
             [
@@ -278,6 +291,13 @@ class LfControls
                 'selectors' => [
                     '{{WRAPPER}} .lf-sub-menu-bg' => 'background-color: {{VALUE}};',
                 ],
+            ]
+        );
+        $widget_menu_background->end_controls_tab();
+        $widget_menu_background->start_controls_tab(
+            'style_submenu_txt_tab',
+            [
+                'label' => esc_html__('Text Color', 'textdomain'),
             ]
         );
         $widget_menu_background->add_control(
@@ -291,6 +311,8 @@ class LfControls
                 ],
             ]
         );
+        $widget_menu_background->end_controls_tab();
+        $widget_menu_background->end_controls_tabs();
         $widget_menu_background->end_controls_section();
     }
 
