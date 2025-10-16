@@ -387,9 +387,7 @@
 
 .elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number:hover {
     background: #f0f0f0 !important;
-    /* border-color: #999 !important; */
     transform: translateY(-2px) !important;
-    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important; */
 }
 
 .elementor-widget-elementor-gallery-flip-card .elementor-gallery-flip-card-container .pagination-links .page-number.current {
