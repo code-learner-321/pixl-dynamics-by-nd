@@ -11,11 +11,11 @@ jQuery(document).ready(function($) {
         init
     );
 
-    function initFlipCards() {
-        $('.card').off('mouseenter mouseleave').hover(
-            e => $(e.currentTarget).toggleClass('flipped')
-        );
-    }
+    // function initFlipCards() {
+    //     $('.card').off('mouseenter mouseleave').hover(
+    //         e => $(e.currentTarget).toggleClass('flipped')
+    //     );
+    // }
 
     function loadPage(page, $container) {
         const $galleryContainer = $container.find('.gallery-container');
@@ -61,7 +61,6 @@ jQuery(document).ready(function($) {
         
         // Rebuild the pagination HTML
         let paginationHtml = '';
-        
         // Add previous button if not on first page
         if (currentPage > 1) {
             paginationHtml += `<a href="#" data-page="${currentPage - 1}" class="page-number prev">&laquo; Previous</a>`;
@@ -69,7 +68,6 @@ jQuery(document).ready(function($) {
         
         // Add page numbers
         paginationHtml += pageNumbersHtml.join('');
-        
         // Add next button if not on last page
         if (currentPage < maxPages) {
             paginationHtml += `<a href="#" data-page="${currentPage + 1}" class="page-number next">Next &raquo;</a>`;
