@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
     const init = () => {
         initPagination();
-        initFlipCards();
+        // initFlipCards();
     };
 
     // Initialize and re-initialize when Elementor frontend is ready
