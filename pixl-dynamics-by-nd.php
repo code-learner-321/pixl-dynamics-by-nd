@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name:       Pixl Dynamics By ND
- * Description:       A Simple Elementor Portfolio Gallery Plugin With Card Flip Effect.
+ * Description:       Custom Elementor addon offering unique widgets and advanced styling to enhance web design and experience.
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
